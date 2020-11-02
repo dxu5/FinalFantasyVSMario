@@ -1,8 +1,11 @@
 export default class Controller {
-  constructor(mario) {
-    this.mario = mario;
+  constructor(gameMain) {
+    this.gameMain = gameMain;
     this.keyStates = new Map();
     this.keyMap = new Map();
+    this.mapLeftMove = this.mapLeftMove.bind(this);
+    this.mapRightMove = this.mapRightMove.bind(this);
+    this.mapJump = this.mapJump.bind(this);
     this.mapInputResponses();
   }
   mapInputResponses() {

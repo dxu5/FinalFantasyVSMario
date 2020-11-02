@@ -18,9 +18,9 @@ export default class GameMain {
   animate(time) {
     this.accumulatedTime += (time - this.lastTime) / 1000;
     while (this.accumulatedTime > this.deltaTime) {
-      this.game.world.update(this.deltaTime);
-      this.display.drawWorld();
-      this.display.drawMario(this.game.world.mario);
+      this.game.update(this.deltaTime);
+      this.display.drawWorld(this.game);
+      this.display.drawMario(this.game.mario);
       this.accumulatedTime -= this.deltaTime;
     }
 

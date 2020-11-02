@@ -9,19 +9,42 @@ export default class Controller {
     this.mapInputResponses();
   }
   mapInputResponses() {
-    const mario = this.mario;
-    this.map("Space", (keyState) => {
+    //these will map to the keyboard codes
+    this.mapJump("Space");
+    this.mapJump("KeyW");
+
+    this.mapRightMove("ArrowRight");
+    this.mapRightMove("KeyD");
+
+    this.mapLeftMove("ArrowLeft");
+    this.mapLeftMove("KeyA");
+    const togglePause = this.gameMain.togglePause;
+    this.map("KeyP", (keyState) => {
+      if (keyState) {
+        togglePause();
+      }
+    });
+  }
+  mapRightMove(input) {
+    const mario = this.gameMain.game.mario;
+    this.map(input, (keyState) => {
+      mario.walk.rightDirection = keyState;
+    });
+  }
+  mapLeftMove(input) {
+    const mario = this.gameMain.game.mario;
+    this.map(input, (keyState) => {
+      mario.walk.leftDirection = -keyState;
+    });
+  }
+  mapJump(input) {
+    const mario = this.gameMain.game.mario;
+    this.map(input, (keyState) => {
       if (keyState) {
         mario.jump.start();
       } else {
         mario.jump.cancel();
       }
-    });
-    this.map("ArrowRight", (keyState) => {
-      mario.walk.direction = keyState;
-    });
-    this.map("ArrowLeft", (keyState) => {
-      mario.walk.direction = -keyState;
     });
   }
   map(code, callback) {

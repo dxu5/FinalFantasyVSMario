@@ -1,19 +1,40 @@
+import Controller from "./controller.js";
 export default class GameMain {
   constructor(game, display, controller) {
     this.game = game;
     this.display = display;
-    this.controller = controller;
+    this.pauseStatus = false;
 
     this.animate = this.animate.bind(this);
+    this.run = this.run.bind(this);
+    this.pause = this.pause.bind(this);
+    this.togglePause = this.togglePause.bind(this);
   }
   start() {
     this.lastTime = 0;
     this.accumulatedTime = 0;
+
     this.display.loadWorld();
     this.display.loadMario();
-    this.controller.listenForInput();
+    const controller = new Controller(this);
+    controller.listenForInput();
     this.deltaTime = 1 / 60;
-    requestAnimationFrame(this.animate);
+    this.run();
+  }
+  togglePause() {
+    if (this.pauseStatus) {
+      this.run();
+    } else {
+      this.pause();
+    }
+  }
+  run() {
+    this.pauseStatus = false;
+    this.id = requestAnimationFrame(this.animate);
+  }
+  pause() {
+    this.pauseStatus = true;
+    cancelAnimationFrame(this.id);
   }
   animate(time) {
     this.accumulatedTime += (time - this.lastTime) / 1000;
@@ -26,6 +47,6 @@ export default class GameMain {
 
     this.lastTime = time;
 
-    requestAnimationFrame(this.animate);
+    this.id = requestAnimationFrame(this.animate);
   }
 }

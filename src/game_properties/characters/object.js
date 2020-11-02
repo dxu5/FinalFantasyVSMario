@@ -5,6 +5,9 @@ export default class MovingObject {
     this.vel = new Vector();
     this.pos = new Vector();
     this.size = new Vector();
+    this.width = 0;
+    this.height = 0;
+    this.isGrounded = true;
   }
   update(deltaTime) {
     this.behaviors.forEach((behavior) => {

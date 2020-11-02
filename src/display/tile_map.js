@@ -7,14 +7,15 @@ export default {
       tile: "ground1",
       type: "ground",
       ranges: [
-        [10, 20, 9, 10],
-        [0, 20, 12, 13],
+        [0, 10, 3, 4],
+        [0, 20, 9, 10],
+        [0, 22, 12, 13],
       ],
     },
     {
       tile: "ground2",
       type: "ground",
-      ranges: [[0, 20, 13, 14]],
+      ranges: [[0, 22, 13, 14]],
     },
   ],
 };

@@ -1,4 +1,4 @@
-import World from "./World.js";
+import World from "./world.js";
 export default class Game {
   constructor(height, width) {
     this.height = height;

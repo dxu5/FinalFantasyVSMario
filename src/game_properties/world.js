@@ -1,4 +1,4 @@
-import Mario from "./Mario";
+import Mario from "./mario.js";
 import collision from "./collision";
 
 export default class World {

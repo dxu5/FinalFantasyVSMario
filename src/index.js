@@ -1,4 +1,4 @@
-import Game from "./game.js";
+import Game from "./game_properties/game.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const height = 400;

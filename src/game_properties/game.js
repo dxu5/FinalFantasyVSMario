@@ -1,5 +1,5 @@
-import Mario from "./Mario";
-import collision from "./collision";
+import Mario from "./characters/mario.js";
+import Collider from "./collider.js";
 import tilemap from "../display/tile_map";
 
 export default class Game {
@@ -13,13 +13,17 @@ export default class Game {
     this.layers = [];
 
     this.tileMap = [];
+    this.collider = new Collider(this.tileMap);
+    this.setTilemapLayer = this.setTilemapLayer.bind(this);
     this.setTilemapLayer();
   }
   update(deltaTime) {
     this.objects.forEach((object) => {
       object.update(deltaTime);
       object.vel.y += this.gravity;
-      collision(object, this.width, this.height);
+      object.pos.x += object.vel.x * deltaTime;
+      object.pos.y += object.vel.y * deltaTime;
+      this.collider.checkCollision(object, this.width, this.height);
     });
   }
 

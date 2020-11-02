@@ -1,6 +1,6 @@
 import MovingObject from "./object.js";
-import Jump from "./behaviors/jump";
-import Walk from "./behaviors/walk";
+import Jump from "../behaviors/jump";
+import Walk from "../behaviors/walk";
 
 export default class Mario extends MovingObject {
   constructor() {
@@ -11,7 +11,5 @@ export default class Mario extends MovingObject {
     this.addBehavior(new Walk());
   }
 
-  draw(ctx) {
-    //need to fill this in!
-  }
+  draw(ctx) {}
 }

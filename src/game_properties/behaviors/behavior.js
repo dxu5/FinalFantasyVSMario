@@ -4,6 +4,6 @@ export default class Behavior {
   }
 
   update() {
-    console.warn(`You forgot to update ${this.name} behavior`);
+    console.log(`Need to update this behavior`);
   }
 }

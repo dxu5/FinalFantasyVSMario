@@ -1,4 +1,5 @@
 import Game from "./game_properties/game.js";
+import GameMain from "./game_main.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const height = 400;
@@ -6,4 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const canvas = document.getElementById("canvas");
   const game = new Game(height, width);
+  const gameMain = new GameMain(game, display, controller);
+  gameMain.start();
 });

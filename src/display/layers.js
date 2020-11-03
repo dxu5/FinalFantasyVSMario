@@ -1,5 +1,4 @@
 export function createBackgroundLayer(backgroundSheet) {
-  console.log("fetching json");
   readJSON(`./world.json`);
 }
 function readJSON(path) {

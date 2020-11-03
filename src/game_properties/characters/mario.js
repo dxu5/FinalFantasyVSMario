@@ -21,7 +21,6 @@ export default class Mario extends ObjectEntity {
       behavior.update(this, deltaTime);
     });
     this.decideStatus();
-    console.log(this.status);
   }
 
   decideStatus() {

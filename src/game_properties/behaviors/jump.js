@@ -1,5 +1,4 @@
 import Behavior from "./behavior";
-//Need for this to be a extension of the behavior class
 export default class Jump extends Behavior {
   constructor() {
     super("jump");

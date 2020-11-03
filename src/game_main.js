@@ -11,6 +11,7 @@ export default class GameMain {
     this.togglePause = this.togglePause.bind(this);
   }
   start() {
+    this.game.mario.pos.set(100, 250);
     this.lastTime = 0;
     this.accumulatedTime = 0;
 

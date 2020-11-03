@@ -1,5 +1,7 @@
 import SpriteSheet from "./sprite_sheet.js";
 import { backgroundImage, marioImage } from "../files";
+import Camera from "./camera.js";
+
 export default class Display {
   constructor(canvas, height, width) {
     canvas.height = height;

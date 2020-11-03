@@ -7,6 +7,7 @@ export default class Game {
     this.height = height;
     this.width = width;
     this.gravity = 20;
+    this.tileSize = 29;
     this.objects = new Set();
     this.mario = new Mario();
     this.objects.add(this.mario);

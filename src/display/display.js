@@ -11,7 +11,7 @@ export default class Display {
     this.ctx = canvas.getContext("2d");
     this.height = height;
     this.width = width;
-    this.backgroundColor = "#0F5EF1";
+    this.backgroundColor = "#add8e6";
     this.spriteSheets = new Map();
 
     this.layers = [];

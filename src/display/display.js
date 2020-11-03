@@ -6,6 +6,8 @@ export default class Display {
   constructor(canvas, height, width) {
     canvas.height = height;
     canvas.width = width;
+    this.camera = new Camera();
+    this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.height = height;
     this.width = width;

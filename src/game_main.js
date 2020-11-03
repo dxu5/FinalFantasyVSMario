@@ -44,6 +44,7 @@ export default class GameMain {
     while (this.accumulatedTime > this.deltaTime) {
       this.game.update(this.deltaTime);
       this.display.drawWorld(this.game);
+      this.display.drawCameraRect(this.display.camera);
       this.display.drawMario(this.game.mario);
       this.accumulatedTime -= this.deltaTime;
     }

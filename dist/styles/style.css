@@ -4,14 +4,39 @@ body {
   justify-content: flex-start;
   align-items: center;
   background: #e9e7e9;
+  color: black;
 }
 #canvas {
   width: 100vw;
-  max-width: 800px;
+  max-width: 580px;
   min-width: 400px;
 }
 
 img {
   margin-top: 3em;
   margin-bottom: 1em;
+}
+
+.col {
+  width: 24.25px;
+  border: 1px black solid;
+}
+.row {
+  height: 23.6px;
+  border: 1px black solid;
+}
+.test-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.grid-cols {
+  margin-left: 16px;
+  display: flex;
+  flex-direction: row;
+}
+.grid-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }

@@ -29,7 +29,6 @@ export default class Display {
       backgroundSheet.addSprite("sky", 155, 165);
       backgroundSheet.addSprite("ground1", 445, 202);
       backgroundSheet.addSprite("ground2", 445, 220);
-      backgroundSheet.addSprite("cloudLeft", 171.5, 113);
       backgroundSheet.addSprite("cloudMiddle", 190, 113);
       backgroundSheet.addSprite("cloudRight", 206.5, 113);
       spriteSheets.set("background", backgroundSheet);

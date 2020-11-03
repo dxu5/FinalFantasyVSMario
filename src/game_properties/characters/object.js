@@ -9,6 +9,7 @@ export default class ObjectEntity {
     this.width = 0;
     this.height = 0;
     this.isGrounded = true;
+    this.frames = 0;
   }
 
   getRight() {

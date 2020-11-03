@@ -1,6 +1,6 @@
 import Mario from "./characters/mario.js";
 import Collider from "./collider.js";
-import tilemap from "./tilemap";
+import tilemap from "./tile_map";
 
 export default class Game {
   constructor(height, width) {

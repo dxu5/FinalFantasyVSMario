@@ -12,6 +12,7 @@ export default class Controller {
     //these will map to the keyboard codes
     this.mapJump("Space");
     this.mapJump("KeyW");
+    this.mapJump("ArrowUp");
 
     this.mapRightMove("ArrowRight");
     this.mapRightMove("KeyD");
@@ -41,6 +42,7 @@ export default class Controller {
     const mario = this.gameMain.game.mario;
     this.map(input, (keyState) => {
       if (keyState) {
+        mario.isGrounded = false;
         mario.jump.start();
       } else {
         mario.jump.cancel();

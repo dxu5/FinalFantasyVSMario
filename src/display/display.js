@@ -1,8 +1,8 @@
 import SpriteSheet from "./sprite_sheet.js";
 import { backgroundImage, marioImage } from "../files";
 import Camera from "./camera";
-import backgroundSheet1Sprites from "./sheets/background1";
-import marioSheetSprites from "./sheets/mario_small";
+import background1 from "./sheets/background1";
+import marioSprite from "./sheets/mario_small";
 
 export default class Display {
   constructor(canvas, height, width) {
@@ -19,15 +19,13 @@ export default class Display {
     this.layers = [];
     this.loadWorld = this.loadWorld.bind(this);
     this.loadMario = this.loadMario.bind(this);
-
-    // this.sprites = this.createSprites();
   }
 
   loadWorld() {
     const spriteSheets = this.spriteSheets;
     backgroundImage.onload = function () {
       const backgroundSheet = new SpriteSheet(backgroundImage, 29, 29);
-      backgroundSheet1Sprites.sprites.forEach((sprite) => {
+      background1.sprites.forEach((sprite) => {
         backgroundSheet.addSprite(sprite.name, sprite.x, sprite.y);
       });
       spriteSheets.set("background", backgroundSheet);
@@ -37,7 +35,7 @@ export default class Display {
     const spriteSheets = this.spriteSheets;
     marioImage.onload = function () {
       const marioSheet = new SpriteSheet(marioImage, 60, 60);
-      marioSheetSprites.sprites.forEach((sprite) => {
+      marioSprite.sprites.forEach((sprite) => {
         marioSheet.addSprite(sprite.name, sprite.x, sprite.y);
       });
       spriteSheets.set("mario", marioSheet);
@@ -54,7 +52,6 @@ export default class Display {
       const tileWidth = 29;
       const tileHeight = 29;
 
-      // only draw the tiles that the camera is viewing
       game.cameraView(this.camera, (tile, x, y) =>
         backgroundSheet.draw(tile.name, this.ctx, x * tileWidth, y * tileHeight)
       );

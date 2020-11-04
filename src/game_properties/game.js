@@ -1,6 +1,8 @@
 import Mario from "./characters/mario.js";
+import Dragon from "./characters/dragon";
+import Bullet from "./characters/bullet";
 import Collider from "./collider.js";
-import tilemap from "./tile_map";
+import tilemap from "../display/tile_map";
 
 export default class Game {
   constructor(height, width) {
@@ -11,7 +13,14 @@ export default class Game {
     this.objects = new Set();
     this.mario = new Mario();
     this.objects.add(this.mario);
-    this.layers = [];
+
+    const dragon = new Dragon();
+    dragon.pos.set(600, 100);
+    const bullet = new Bullet();
+    bullet.pos.set(300, 100);
+
+    this.objects.add(dragon);
+    this.objects.add(bullet);
     this.totalTime = 0;
     this.tileMap = [];
     this.collider = new Collider(this.tileMap);
@@ -21,7 +30,7 @@ export default class Game {
   }
   update(deltaTime) {
     this.objects.forEach((object) => {
-      object.update(deltaTime);
+      object.update(deltaTime, this.totalTime);
       object.frames = (object.frames + 1) % 60;
       object.lastPos.x = object.pos.x;
       object.lastPos.y = object.pos.y;
@@ -60,7 +69,7 @@ export default class Game {
   getTile(x, y) {
     if (this.tileMap[x]) return this.tileMap[x][y];
   }
-  cameraView(camera, backgroundSpriteSheet, ctx) {
+  cameraView(camera, backgroundSpriteSheet) {
     if (this.mario.pos.x > 300) {
       camera.pos.x = this.mario.pos.x - 300;
     }

@@ -2,86 +2,96 @@ import SpriteSheet from "./sprite_sheet.js";
 import {
   backgroundImage,
   marioImage,
-  backgroundLastLayerImage,
+  backgroundFirstLayerImage,
+  enemiesImage,
 } from "../files";
 import Camera from "./camera";
 import background1 from "./sheets/background1";
 import marioSprite from "./sheets/mario_small";
+import enemiesSheetSprites from "./sheets/enemies";
 
 export default class Display {
   constructor(canvas, height, width) {
     canvas.height = height;
     canvas.width = width;
-    this.pauseScreen = "#0F5EF1";
     this.camera = new Camera(height, width);
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.height = height;
     this.width = width;
-    this.backgroundColor = "#add8e6";
+    this.backgroundColor = "#0F5EF1";
     this.spriteSheets = new Map();
-
-    this.layers = [];
+    this.loadedSheets = new Set();
     this.loadWorld = this.loadWorld.bind(this);
-    this.loadMario = this.loadMario.bind(this);
   }
 
   loadWorld() {
     const spriteSheets = this.spriteSheets;
+    const loadedSheets = this.loadedSheets;
     backgroundImage.onload = function () {
       const backgroundSheet = new SpriteSheet(backgroundImage, 29, 29);
       background1.sprites.forEach((sprite) => {
         backgroundSheet.addSprite(sprite.name, sprite.x, sprite.y);
       });
       spriteSheets.set("background", backgroundSheet);
+      loadedSheets.add("background");
     };
-  }
-  loadMario() {
-    const spriteSheets = this.spriteSheets;
+    backgroundFirstLayerImage.onload = function () {
+      loadedSheets.add("backgroundLastLayer");
+    };
     marioImage.onload = function () {
       const marioSheet = new SpriteSheet(marioImage, 60, 60);
       marioSprite.sprites.forEach((sprite) => {
         marioSheet.addSprite(sprite.name, sprite.x, sprite.y);
       });
       spriteSheets.set("mario", marioSheet);
+      loadedSheets.add("mario");
     };
-    backgroundLastLayerImage.onload = function () {
-      spriteSheets.set("backgroundLastLayer", 0);
+    enemiesImage.onload = function () {
+      enemiesSheetSprites.enemies.forEach((enemy) => {
+        const enemySheet = new SpriteSheet(
+          enemiesImage,
+          enemy.width,
+          enemy.height
+        );
+        enemy.sprites.forEach((sprite) => {
+          if (sprite.type === "flip") {
+            enemySheet.addSpriteFlipped(sprite.name, sprite.x, sprite.y);
+          } else {
+            enemySheet.addSprite(sprite.name, sprite.x, sprite.y);
+          }
+        });
+        spriteSheets.set(enemy.SpriteSheet, enemySheet);
+      });
+      loadedSheets.add("enemies");
     };
   }
 
   drawWorld(game) {
-    if (
-      this.spriteSheets.has("background") &&
-      this.spriteSheets.has("backgroundLastLayer")
-    ) {
+    if (this.finishedLoading()) {
       this.ctx.drawImage(
-        backgroundLastLayerImage,
+        backgroundFirstLayerImage,
         -this.camera.pos.x / 6,
         0,
         this.width * 3,
         this.height
       );
-      // this.ctx.drawImage(backgroundLastLayerImage, this.width, this.height);
       const backgroundSheet = this.spriteSheets.get("background");
-      const cameraPanel = game.cameraView(
-        this.camera,
-        backgroundSheet,
-        this.ctx
-      );
+
+      const cameraPanel = game.cameraView(this.camera, backgroundSheet);
       this.ctx.drawImage(cameraPanel, -this.camera.pos.x % 29, 0);
+
+      game.objects.forEach((object) =>
+        object.draw(this.ctx, this.spriteSheets, this.camera)
+      );
     }
   }
-  drawMario(mario) {
-    if (this.spriteSheets.has("mario")) {
-      this.spriteSheets
-        .get("mario")
-        .draw(
-          mario.frame,
-          this.ctx,
-          mario.pos.x - this.camera.pos.x,
-          mario.pos.y - this.camera.pos.y
-        );
-    }
+  finishedLoading() {
+    return (
+      this.loadedSheets.has("background") &&
+      this.loadedSheets.has("backgroundLastLayer") &&
+      this.loadedSheets.has("mario") &&
+      this.loadedSheets.has("enemies")
+    );
   }
 }

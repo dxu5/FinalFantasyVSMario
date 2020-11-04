@@ -9,6 +9,7 @@ export default class Dragon extends ObjectEntity {
     this.width = 43;
     this.height = 63;
     this.speed = 8000;
+    this.falling = false;
     this.addBehavior(new AutoWalk(moveLeftLimit, moveRightLimit));
     this.stompedCount = 0;
 
@@ -34,7 +35,6 @@ export default class Dragon extends ObjectEntity {
         mario.stomp.bounce();
         this.stompedCount += 1;
       } else {
-        console.log("hit mario");
         mario.lives -= 1;
         mario.invincible.start();
         mario.invinciblity = true;
@@ -43,24 +43,13 @@ export default class Dragon extends ObjectEntity {
   }
   update(deltaTime, totalTime, objects) {
     this.behaviors.forEach((behavior) => {
-      behavior.update(this, deltaTime); //takes in object and deltaTime
+      behavior.update(this, deltaTime);
     });
     this.decideStatus(totalTime, objects);
   }
   decideStatus(totalTime, objects) {
-    if (this.stompedCount === 2 && this.speed !== 0) {
-      setTimeout(() => {
-        objects.delete(this);
-      }, 5000);
-      this.speed = 0;
-      this.vel.x = 0;
-      this.status = "dragonFlattened";
-      this.width = 43;
-      this.height = 20;
-
-      this.frame = this.facing === "left" ? "flattenedLeft" : "flattenedRight";
-    } else if (this.stompedCount === 1) {
-      this.status = "dragonHalfFlattened";
+    if (this.stompedCount === 1) {
+      this.status = "ignoreCollisions";
       this.width = 43;
       this.height = 34;
 

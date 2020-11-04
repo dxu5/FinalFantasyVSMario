@@ -34,7 +34,6 @@ export default class Bullet extends GameObject {
         this.removeBehavior("autoMove");
         this.falling = true;
       } else {
-        console.log("hit mario");
         mario.lives -= 1;
         mario.invincible.start();
         mario.invinciblity = true;

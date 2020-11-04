@@ -13,7 +13,7 @@ export default {
       ],
     },
     {
-      SpriteSheet: "dragonHalfFlattened",
+      SpriteSheet: "ignoreCollisions",
       width: 43,
       height: 34,
       sprites: [

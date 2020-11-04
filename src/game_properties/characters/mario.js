@@ -31,14 +31,14 @@ export default class Mario extends ObjectEntity {
     this.walkLeftFrames = ["walkingLeft", "idleLeft"];
     this.walkLeftFramesMushroom = ["walkingLeft1", "walkingLeft2", "idleLeft"];
   }
-  update(deltaTime) {
+  update(deltaTime, totalTime) {
     this.behaviors.forEach((behavior) => {
       behavior.update(this, deltaTime);
     });
-    this.decideStatus();
+    this.decideStatus(totalTime);
   }
 
-  decideStatus() {
+  decideStatus(totalTime) {
     if (this.pos.y > 400) this.lives = 0;
     if (this.lives === 0) {
       this.width = 29;
@@ -121,6 +121,9 @@ export default class Mario extends ObjectEntity {
         this.frame = "idleLeft";
         this.status = "idle";
       }
+    }
+    if (this.invinciblity && this.lives === 1) {
+      if (Math.floor(totalTime / 0.2) % 2) this.frame = "transparent";
     }
   }
 

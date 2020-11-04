@@ -7,7 +7,6 @@ export default {
         [0, 125, 12, 1],
         [130, 18, 10, 1],
         [153, 25, 6, 1],
-        [0, 5, 10, 1],
         [33, 5, 9, 5],
         [202, 20, 12, 1],
       ],
@@ -19,7 +18,6 @@ export default {
         [0, 125, 13, 1],
         [130, 18, 11, 3],
         [153, 25, 7, 7],
-        [0, 5, 11, 2],
         [33, 5, 10, 4],
         [202, 20, 13, 1],
       ],
@@ -28,7 +26,6 @@ export default {
       tile: "groundTopRightEdge",
       type: "ground",
       ranges: [
-        [5, 1, 10, 1],
         [37, 1, 9, 1],
         [78, 1, 12, 1],
         [110, 1, 12, 1],
@@ -56,8 +53,6 @@ export default {
       tile: "groundMidRightEdge",
       type: "ground",
       ranges: [
-        [5, 1, 11, 1],
-        [5, 1, 11, 1],
         [37, 1, 10, 2],
         [78, 1, 13, 1],
         [110, 1, 13, 1],
@@ -85,7 +80,6 @@ export default {
       tile: "groundTopRightPatch",
       type: "ground",
       ranges: [
-        [5, 1, 12, 1],
         [37, 1, 12, 1],
         [135, 1, 12, 1],
         [158, 1, 8, 1],
@@ -105,7 +99,6 @@ export default {
       type: "floatingPlatform",
       ranges: [
         [73, 1, 8, 1],
-        [100, 1, 7, 1],
         [113, 1, 6, 1],
       ],
     },
@@ -114,7 +107,6 @@ export default {
       type: "floatingPlatform",
       ranges: [
         [74, 3, 8, 1],
-        [101, 5, 7, 1],
         [114, 10, 6, 1],
         [136, 4, 12, 1],
         [159, 3, 8, 1],
@@ -125,7 +117,6 @@ export default {
       type: "floatingPlatform",
       ranges: [
         [77, 1, 8, 1],
-        [106, 1, 7, 1],
         [124, 1, 6, 1],
       ],
     },
@@ -133,7 +124,6 @@ export default {
       tile: "groundTopFloatingLeftSoil",
       ranges: [
         [73, 1, 9, 3],
-        [100, 1, 8, 4],
         [113, 1, 7, 10],
       ],
     },
@@ -141,7 +131,6 @@ export default {
       tile: "groundSoil",
       ranges: [
         [74, 3, 9, 3],
-        [101, 5, 8, 4],
         [114, 10, 7, 10],
       ],
     },
@@ -149,29 +138,23 @@ export default {
       tile: "groundTopFloatingRightSoil",
       ranges: [
         [77, 1, 9, 3],
-        [106, 1, 8, 4],
         [124, 1, 7, 10],
       ],
     },
 
     {
-      tile: "platformMiddle",
-      //    "type": "floatingPlatform",
+      tile: "singlePlatform",
       type: "ground",
       ranges: [
-        [14, 11, 8, 1],
         [82, 1, 7, 1],
         [87, 1, 7, 1],
         [186, 7, 6, 1],
       ],
     },
     {
-      tile: "platformLeft",
-      //    "type": "floatingPlatform",
+      tile: "singlePlatform",
       type: "ground",
       ranges: [
-        [8, 1, 8, 1],
-        [13, 1, 8, 1],
         [28, 1, 6, 1],
         [81, 1, 7, 1],
         [86, 1, 7, 1],
@@ -181,11 +164,9 @@ export default {
       ],
     },
     {
-      tile: "platformRight",
+      tile: "singlePlatform",
       type: "ground",
       ranges: [
-        [9, 1, 8, 1],
-        [25, 1, 8, 1],
         [29, 1, 6, 1],
         [83, 1, 7, 1],
         [88, 1, 7, 1],
@@ -195,14 +176,8 @@ export default {
       ],
     },
     {
-      tile: "mysteryBox",
-      type: "ground",
-      ranges: [[19, 1, 4, 1]],
-    },
-    {
       tile: "grass1",
       ranges: [
-        [7, 1, 11, 1],
         [45, 1, 11, 1],
         [60, 1, 11, 1],
         [96, 1, 11, 1],
@@ -212,7 +187,6 @@ export default {
     {
       tile: "grass2",
       ranges: [
-        [8, 2, 11, 1],
         [46, 3, 11, 1],
         [61, 3, 11, 1],
         [97, 1, 11, 1],
@@ -222,7 +196,6 @@ export default {
     {
       tile: "grass4",
       ranges: [
-        [10, 1, 11, 1],
         [49, 1, 11, 1],
         [64, 1, 11, 1],
         [98, 1, 11, 1],
@@ -236,8 +209,15 @@ export default {
         [70, 1, 9, 1],
         [40, 3, 7, 1],
         [45, 3, 7, 1],
-        [109, 1, 9, 1],
-        [109, 1, 4, 1],
+        [103, 8, 11, 1],
+        [104, 7, 10, 1],
+        [105, 6, 9, 1],
+        [106, 5, 8, 1],
+        [107, 4, 7, 1],
+        [108, 3, 6, 1],
+        [109, 2, 5, 1],
+        [110, 1, 4, 1],
+
         [137, 1, 7, 1],
         [160, 1, 3, 1],
         [181, 1, 8, 1],
@@ -258,6 +238,14 @@ export default {
     },
   ],
   enemies: [
+    {
+      name: "dragon",
+      x: 900,
+      y: 200,
+      x1Limit: 100,
+      x2Limit: 1000,
+      trigger: 200,
+    },
     {
       name: "dragon",
       x: 1900,

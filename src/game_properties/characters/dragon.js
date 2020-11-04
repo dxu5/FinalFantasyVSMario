@@ -30,7 +30,7 @@ export default class Dragon extends ObjectEntity {
   }
   collides(mario) {
     if (mario.invinciblity) return;
-    if (this.stompedCount !== 2) {
+    if (this.stompedCount !== 2 && this.status !== "ignoreCollisions") {
       if (mario.vel.y > this.vel.y) {
         mario.stomp.bounce();
         this.stompedCount += 1;

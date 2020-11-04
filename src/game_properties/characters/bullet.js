@@ -26,7 +26,11 @@ export default class Bullet extends GameObject {
   collides(mario) {
     if (mario.invinciblity) return;
     if (!this.falling) {
-      if (mario.vel.y > this.vel.y) {
+      if (
+        mario.vel.y > this.vel.y &&
+        mario.getBottom() > this.getTop() &&
+        mario.getLastBottom() <= this.getTop()
+      ) {
         mario.stomp.bounce();
         this.vel.y += 40;
         this.vel.x = 0;

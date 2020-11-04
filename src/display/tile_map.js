@@ -7,7 +7,7 @@ export default {
         [0, 125, 12, 1],
         [130, 18, 10, 1],
         [153, 25, 6, 1],
-        [33, 5, 9, 5],
+        // [33, 5, 9, 5],
         [202, 20, 12, 1],
       ],
     },
@@ -18,7 +18,7 @@ export default {
         [0, 125, 13, 1],
         [130, 18, 11, 3],
         [153, 25, 7, 7],
-        [33, 5, 10, 4],
+        // [33, 5, 10, 4],
         [202, 20, 13, 1],
       ],
     },
@@ -26,7 +26,7 @@ export default {
       tile: "groundTopRightEdge",
       type: "ground",
       ranges: [
-        [37, 1, 9, 1],
+        // [37, 1, 9, 1],
         [78, 1, 12, 1],
         [110, 1, 12, 1],
         [135, 1, 10, 1],
@@ -40,7 +40,7 @@ export default {
       tile: "groundTopLeftEdge",
       type: "ground",
       ranges: [
-        [32, 1, 9, 1],
+        // [32, 1, 9, 1],
         [93, 1, 12, 1],
         [130, 1, 10, 1],
         [140, 1, 10, 1],
@@ -53,7 +53,7 @@ export default {
       tile: "groundMidRightEdge",
       type: "ground",
       ranges: [
-        [37, 1, 10, 2],
+        // [37, 1, 10, 2],
         [78, 1, 13, 1],
         [110, 1, 13, 1],
         [135, 1, 11, 1],
@@ -67,7 +67,7 @@ export default {
       tile: "groundMidLeftEdge",
       type: "ground",
       ranges: [
-        [32, 1, 10, 2],
+        // [32, 1, 10, 2],
         [93, 1, 13, 1],
         [130, 1, 11, 3],
         [140, 1, 11, 1],
@@ -80,7 +80,7 @@ export default {
       tile: "groundTopRightPatch",
       type: "ground",
       ranges: [
-        [37, 1, 12, 1],
+        // [37, 1, 12, 1],
         [135, 1, 12, 1],
         [158, 1, 8, 1],
       ],
@@ -89,7 +89,7 @@ export default {
       tile: "groundTopLeftPatch",
       type: "ground",
       ranges: [
-        [32, 1, 12, 1],
+        // [32, 1, 12, 1],
         [140, 1, 12, 1],
         [162, 1, 8, 1],
       ],
@@ -149,6 +149,17 @@ export default {
       tile: "singlePlatform",
       type: "ground",
       ranges: [
+        [16, 5, 11, 1],
+
+        [17, 4, 10, 1],
+        [18, 3, 9, 1],
+        [19, 2, 8, 1],
+        [20, 1, 7, 1],
+
+        [32, 1, 9, 1],
+        [32, 2, 10, 1],
+        [32, 3, 11, 1],
+
         [29, 1, 6, 1],
         [86, 1, 7, 1],
         [149, 1, 8, 1],
@@ -229,7 +240,7 @@ export default {
       name: "goomba",
       x: 900,
       y: 200,
-      x1Limit: 100,
+      x1Limit: 620,
       x2Limit: 1000,
       trigger: 200,
     },

@@ -1,7 +1,7 @@
-import GameObject from "./object";
+import ObjectEntity from "./object";
 import AutoWalk from "../behaviors/auto_walk";
 
-export default class Dragon extends GameObject {
+export default class Dragon extends ObjectEntity {
   constructor(xSpawn, ySpawn, moveLeftLimit, moveRightLimit) {
     super();
     this.pos.set(xSpawn, ySpawn);
@@ -27,15 +27,33 @@ export default class Dragon extends GameObject {
       "halfFlattenedWalkRight2",
     ];
   }
-  update(deltaTime, totalTime) {
-    this.behaviors.forEach((behavior) => {
-      behavior.update(this, deltaTime);
-    });
-    this.decideStatus(totalTime);
+  collides(mario) {
+    if (mario.invinciblity) return;
+    if (this.stompedCount !== 2) {
+      if (mario.vel.y > this.vel.y) {
+        mario.stomp.bounce();
+        this.stompedCount += 1;
+      } else {
+        console.log("hit mario");
+        mario.lives -= 1;
+        mario.invincible.start();
+        mario.invinciblity = true;
+      }
+    }
   }
-  decideStatus(totalTime) {
-    if (this.stompedCount === 2) {
+  update(deltaTime, totalTime, objects) {
+    this.behaviors.forEach((behavior) => {
+      behavior.update(this, deltaTime); //takes in object and deltaTime
+    });
+    this.decideStatus(totalTime, objects);
+  }
+  decideStatus(totalTime, objects) {
+    if (this.stompedCount === 2 && this.speed !== 0) {
+      setTimeout(() => {
+        objects.delete(this);
+      }, 5000);
       this.speed = 0;
+      this.vel.x = 0;
       this.status = "dragonFlattened";
       this.width = 43;
       this.height = 20;
@@ -52,7 +70,7 @@ export default class Dragon extends GameObject {
           ? this.halfWalkLeftFrames
           : this.halfWalkRightFrames;
       this.frame = this.animationFrame(frames, totalTime, 0.2);
-    } else {
+    } else if (this.stompedCount === 0) {
       this.facing = this.vel.x > 0 ? "right" : "left";
       const frames =
         this.facing === "left"

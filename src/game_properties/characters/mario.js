@@ -3,6 +3,7 @@ import Jump from "../behaviors/jump";
 import Walk from "../behaviors/walk";
 import Lose from "../behaviors/lose";
 import Stomp from "../behaviors/stomp";
+import Invincible from "../behaviors/invincible";
 
 export default class Mario extends ObjectEntity {
   constructor() {
@@ -124,16 +125,6 @@ export default class Mario extends ObjectEntity {
   }
 
   draw(ctx, spriteSheets, camera) {
-    ctx.strokeStyle = "red";
-    ctx.beginPath();
-    ctx.rect(
-      this.pos.x - camera.pos.x,
-      this.pos.y - camera.pos.y,
-      this.width,
-      this.height
-    );
-    ctx.stroke();
-
     spriteSheets
       .get(this.mario)
       .draw(

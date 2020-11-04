@@ -86,7 +86,7 @@ export default class Game {
       const game = this;
       setTimeout(() => {
         game.removeEnemies();
-        game.mario.lives = 1;
+        game.mario.lives = 2;
         game.mario.pos.set(145, 100);
         camera.pos.x = 0;
 

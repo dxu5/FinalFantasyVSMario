@@ -97,16 +97,12 @@ export default {
     {
       tile: "groundTopFloatingLeft",
       type: "floatingPlatform",
-      ranges: [
-        [73, 1, 8, 1],
-        [113, 1, 6, 1],
-      ],
+      ranges: [[113, 1, 6, 1]],
     },
     {
       tile: "groundTop",
       type: "floatingPlatform",
       ranges: [
-        [74, 3, 8, 1],
         [114, 10, 6, 1],
         [136, 4, 12, 1],
         [159, 3, 8, 1],
@@ -115,31 +111,19 @@ export default {
     {
       tile: "groundTopFloatingRight",
       type: "floatingPlatform",
-      ranges: [
-        [77, 1, 8, 1],
-        [124, 1, 6, 1],
-      ],
+      ranges: [[124, 1, 6, 1]],
     },
     {
       tile: "groundTopFloatingLeftSoil",
-      ranges: [
-        [73, 1, 9, 3],
-        [113, 1, 7, 10],
-      ],
+      ranges: [[113, 1, 7, 10]],
     },
     {
       tile: "groundSoil",
-      ranges: [
-        [74, 3, 9, 3],
-        [114, 10, 7, 10],
-      ],
+      ranges: [[114, 10, 7, 10]],
     },
     {
       tile: "groundTopFloatingRightSoil",
-      ranges: [
-        [77, 1, 9, 3],
-        [124, 1, 7, 10],
-      ],
+      ranges: [[124, 1, 7, 10]],
     },
 
     {
@@ -206,7 +190,13 @@ export default {
       tile: "singlePlatform",
       type: "ground",
       ranges: [
-        [70, 1, 9, 1],
+        [73, 6, 11, 1],
+        [74, 5, 10, 1],
+        [75, 4, 9, 1],
+        [76, 3, 8, 1],
+        [77, 2, 7, 1],
+        [78, 1, 6, 1],
+
         [40, 3, 7, 1],
         [45, 3, 7, 1],
         [103, 8, 11, 1],

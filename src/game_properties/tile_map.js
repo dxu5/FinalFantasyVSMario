@@ -158,6 +158,7 @@ export default {
 
     {
       tile: "platformMiddle",
+      //    "type": "floatingPlatform",
       type: "ground",
       ranges: [
         [14, 11, 8, 1],
@@ -168,6 +169,7 @@ export default {
     },
     {
       tile: "platformLeft",
+      //    "type": "floatingPlatform",
       type: "ground",
       ranges: [
         [8, 1, 8, 1],
@@ -181,6 +183,7 @@ export default {
     },
     {
       tile: "platformRight",
+      //    "type": "floatingPlatform",
       type: "ground",
       ranges: [
         [9, 1, 8, 1],
@@ -193,7 +196,7 @@ export default {
       ],
     },
     {
-      tile: "mysteryBox3",
+      tile: "mysteryBox",
       type: "ground",
       ranges: [[20, 1, 4, 1]],
     },
@@ -234,8 +237,9 @@ export default {
       ],
     },
     {
-      tile: "happyCloud",
-      type: "floatingPlatform",
+      tile: "singlePlatform",
+      // "type": "floatingPlatform",
+      type: "ground",
       ranges: [
         [70, 1, 10, 1],
         [40, 1, 5, 1],

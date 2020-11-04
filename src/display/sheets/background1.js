@@ -121,9 +121,9 @@ export default {
       y: 464,
     },
     {
-      name: "happyCloud",
-      x: 257.8,
-      y: 13.8,
+      name: "singlePlatform",
+      x: 173.5,
+      y: 164,
     },
     {
       name: "mushroom",

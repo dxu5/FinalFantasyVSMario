@@ -336,5 +336,11 @@ export default {
       y: 50,
       trigger: 4400,
     },
+    {
+      name: "bullet",
+      x: 6000,
+      y: 100,
+      trigger: 5600,
+    },
   ],
 };

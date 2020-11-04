@@ -9,7 +9,6 @@ export default class Controller {
     this.mapInputResponses();
   }
   mapInputResponses() {
-    //these will map to the keyboard codes
     this.mapJump("Space");
     this.mapJump("KeyW");
     this.mapJump("ArrowUp");
@@ -41,7 +40,7 @@ export default class Controller {
   mapJump(input) {
     const mario = this.gameMain.game.mario;
     this.map(input, (keyState) => {
-      if (keyState) {
+      if (keyState && mario.vel.y <= 0) {
         mario.isGrounded = false;
         mario.jump.start();
       } else {

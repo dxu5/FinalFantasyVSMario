@@ -1,5 +1,9 @@
 import SpriteSheet from "./sprite_sheet.js";
-import { backgroundImage, marioImage } from "../files";
+import {
+  backgroundImage,
+  marioImage,
+  backgroundLastLayerImage,
+} from "../files";
 import Camera from "./camera";
 import background1 from "./sheets/background1";
 import marioSprite from "./sheets/mario_small";
@@ -8,6 +12,7 @@ export default class Display {
   constructor(canvas, height, width) {
     canvas.height = height;
     canvas.width = width;
+    this.pauseScreen = "#0F5EF1";
     this.camera = new Camera(height, width);
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
@@ -40,16 +45,31 @@ export default class Display {
       });
       spriteSheets.set("mario", marioSheet);
     };
+    backgroundLastLayerImage.onload = function () {
+      spriteSheets.set("backgroundLastLayer", 0);
+    };
   }
 
   drawWorld(game) {
-    this.ctx.clearRect(0, 0, this.width, this.height);
-    this.ctx.fillStyle = this.backgroundColor;
-    this.ctx.fillRect(0, 0, this.width, this.height);
-
-    if (this.spriteSheets.has("background")) {
+    if (
+      this.spriteSheets.has("background") &&
+      this.spriteSheets.has("backgroundLastLayer")
+    ) {
+      this.ctx.drawImage(
+        backgroundLastLayerImage,
+        -this.camera.pos.x / 6,
+        0,
+        this.width,
+        this.height
+      );
+      // this.ctx.drawImage(backgroundLastLayerImage, this.width, this.height);
       const backgroundSheet = this.spriteSheets.get("background");
-      game.cameraView(this.camera, backgroundSheet, this.ctx);
+      const cameraPanel = game.cameraView(
+        this.camera,
+        backgroundSheet,
+        this.ctx
+      );
+      this.ctx.drawImage(cameraPanel, -this.camera.pos.x % 29, 0);
     }
   }
   drawMario(mario) {

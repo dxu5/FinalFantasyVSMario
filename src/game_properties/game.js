@@ -37,7 +37,9 @@ export default class Game {
   setTilemapLayer() {
     tilemap.backgrounds.forEach((background) => {
       background.ranges.forEach((range) => {
-        const [xStart, xEnd, yStart, yEnd] = range;
+        const [xStart, xLength, yStart, yLength] = range;
+        const xEnd = xStart + xLength;
+        const yEnd = yStart + yLength;
         for (let x = xStart; x < xEnd; x++) {
           for (let y = yStart; y < yEnd; y++) {
             this.setTile(x, y, {
@@ -82,8 +84,11 @@ export default class Game {
         });
       }
     }
-    //draw camera by pixel for a smooth transition
-    ctx.drawImage(cameraPanel, -camera.pos.x % 29, -camera.pos.y);
+    const marioPosX = this.getTileIndex(this.mario.pos.x) + 1;
+    const marioPosY = this.getTileIndex(this.mario.pos.y) + 1;
+    let tileName = this.getTile(marioPosX, marioPosY);
+    if (tileName) tileName = tileName.name;
+    return cameraPanel;
   }
   getTileIndex(pos) {
     return Math.floor(pos / this.tileSize);

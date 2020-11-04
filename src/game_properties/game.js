@@ -14,10 +14,8 @@ export default class Game {
     this.mario = new Mario();
     this.objects.add(this.mario);
 
-    const dragon = new Dragon();
-    dragon.pos.set(600, 100);
-    const bullet = new Bullet();
-    bullet.pos.set(300, 100);
+    const dragon = new Dragon(600, 100, 400, 700);
+    const bullet = new Bullet(1200, 50);
 
     this.objects.add(dragon);
     this.objects.add(bullet);
@@ -25,12 +23,13 @@ export default class Game {
     this.tileMap = [];
     this.collider = new Collider(this.tileMap);
     this.setTilemapLayer = this.setTilemapLayer.bind(this);
+    this.restartLevel = this.restartLevel.bind(this);
     this.cameraView = this.cameraView.bind(this);
     this.setTilemapLayer();
   }
   update(deltaTime) {
     this.objects.forEach((object) => {
-      object.update(deltaTime, this.totalTime);
+      object.update(deltaTime, this.totalTime, this.objects);
       object.frames = (object.frames + 1) % 60;
       object.lastPos.x = object.pos.x;
       object.lastPos.y = object.pos.y;
@@ -70,7 +69,9 @@ export default class Game {
     if (this.tileMap[x]) return this.tileMap[x][y];
   }
   cameraView(camera, backgroundSpriteSheet) {
-    if (this.mario.pos.x > 300) {
+    this.restartLevel(camera);
+
+    if (this.mario.pos.x > 310 && this.mario.frame !== "lose") {
       camera.pos.x = this.mario.pos.x - 300;
     }
 
@@ -116,6 +117,19 @@ export default class Game {
     let tileName = this.getTile(marioPosX, marioPosY);
     if (tileName) tileName = tileName.name;
     return cameraPanel;
+  }
+  restartLevel(camera) {
+    if (this.mario.status === "ignoreCollisions" && !this.restarting) {
+      this.restarting = true;
+      const mario = this.mario;
+      const game = this;
+      setTimeout(() => {
+        mario.lives = 1;
+        mario.pos.set(145, 100);
+        camera.pos.x = 0;
+        game.restarting = false;
+      }, 1500);
+    }
   }
   getTileIndex(pos) {
     return Math.floor(pos / this.tileSize);

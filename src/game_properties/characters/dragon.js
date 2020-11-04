@@ -2,11 +2,16 @@ import GameObject from "./object";
 import AutoWalk from "../behaviors/auto_walk";
 
 export default class Dragon extends GameObject {
-  constructor() {
+  constructor(xSpawn, ySpawn, moveLeftLimit, moveRightLimit) {
     super();
+    this.pos.set(xSpawn, ySpawn);
+
     this.width = 43;
     this.height = 63;
-    this.addBehavior(new AutoWalk());
+    this.speed = 8000;
+    this.addBehavior(new AutoWalk(moveLeftLimit, moveRightLimit));
+    this.stompedCount = 0;
+
     this.status = "dragonRegular";
     this.facing = "left";
     this.frame = "regularWalkLeft1";
@@ -29,11 +34,32 @@ export default class Dragon extends GameObject {
     this.decideStatus(totalTime);
   }
   decideStatus(totalTime) {
-    const frames =
-      this.facing === "left"
-        ? this.regularWalkLeftFrames
-        : this.regularWalkRightFrames;
-    this.frame = this.animationFrame(frames, totalTime, 0.15);
+    if (this.stompedCount === 2) {
+      this.speed = 0;
+      this.status = "dragonFlattened";
+      this.width = 43;
+      this.height = 20;
+
+      this.frame = this.facing === "left" ? "flattenedLeft" : "flattenedRight";
+    } else if (this.stompedCount === 1) {
+      this.status = "dragonHalfFlattened";
+      this.width = 43;
+      this.height = 34;
+
+      this.facing = this.vel.x > 0 ? "right" : "left";
+      const frames =
+        this.facing === "left"
+          ? this.halfWalkLeftFrames
+          : this.halfWalkRightFrames;
+      this.frame = this.animationFrame(frames, totalTime, 0.2);
+    } else {
+      this.facing = this.vel.x > 0 ? "right" : "left";
+      const frames =
+        this.facing === "left"
+          ? this.regularWalkLeftFrames
+          : this.regularWalkRightFrames;
+      this.frame = this.animationFrame(frames, totalTime, 0.2);
+    }
   }
 
   draw(ctx, spriteSheets, camera) {

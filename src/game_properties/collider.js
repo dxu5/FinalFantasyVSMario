@@ -5,6 +5,7 @@ export default class Collider {
     this.handleMatchingTiles = this.handleMatchingTiles;
   }
   checkX(gameObj) {
+    if (gameObj.status === "ignoreCollisions") return;
     if (gameObj.pos.x < 0) {
       gameObj.pos.x = 0;
       gameObj.vel.x = 0;
@@ -51,7 +52,7 @@ export default class Collider {
 
   checkY(gameObj) {
     let y;
-    if (gameObj.vel.y === 0) {
+    if (gameObj.vel.y === 0 || gameObj.status === "ignoreCollisions") {
       return;
     } else if (gameObj.vel.y > 0) {
       y = gameObj.getBottom();

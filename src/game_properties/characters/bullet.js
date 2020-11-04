@@ -1,5 +1,5 @@
-import GameObject from "./Game_Object";
-import IgnoreGravity from "../behaviors/Ignore_Gravity";
+import GameObject from "./object";
+import IgnoreGravity from "../behaviors/nogravity";
 
 export default class Bullet extends GameObject {
   constructor() {

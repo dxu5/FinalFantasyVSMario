@@ -158,7 +158,6 @@ export default {
 
     {
       tile: "platformMiddle",
-      //    "type": "floatingPlatform",
       type: "ground",
       ranges: [
         [14, 11, 8, 1],
@@ -169,7 +168,6 @@ export default {
     },
     {
       tile: "platformLeft",
-      //    "type": "floatingPlatform",
       type: "ground",
       ranges: [
         [8, 1, 8, 1],
@@ -183,7 +181,6 @@ export default {
     },
     {
       tile: "platformRight",
-      //    "type": "floatingPlatform",
       type: "ground",
       ranges: [
         [9, 1, 8, 1],
@@ -220,12 +217,6 @@ export default {
         [170, 3, 5, 1],
       ],
     },
-    // {
-    //     "tile": "grass3",
-    //     "ranges": [
-
-    //     ]
-    // },
     {
       tile: "grass4",
       ranges: [
@@ -238,13 +229,12 @@ export default {
     },
     {
       tile: "singlePlatform",
-      // "type": "floatingPlatform",
       type: "ground",
       ranges: [
         [70, 1, 10, 1],
-        [40, 1, 5, 1],
-        [42, 1, 7, 1],
-        [44, 1, 9, 1],
+        [40, 4, 5, 1],
+        [42, 4, 7, 1],
+        [44, 4, 9, 1],
         [109, 1, 9, 1],
         [109, 1, 4, 1],
         [160, 1, 3, 1],

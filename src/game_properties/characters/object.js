@@ -30,4 +30,9 @@ export default class ObjectEntity {
     this.behaviors.push(behavior);
     this[behavior.name] = behavior;
   }
+  animationFrame(frames, totalTime, frameRate) {
+    const frameIdx = Math.floor(totalTime / frameRate) % frames.length;
+    return frames[frameIdx];
+  }
+  draw(spriteSheets, camera) {}
 }

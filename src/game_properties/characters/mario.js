@@ -23,6 +23,17 @@ export default class Mario extends ObjectEntity {
     this.decideStatus();
   }
 
+  draw(ctx, spriteSheets, camera) {
+    spriteSheets
+      .get("mario")
+      .draw(
+        this.frame,
+        ctx,
+        this.pos.x - camera.pos.x,
+        this.pos.y - camera.pos.y
+      );
+  }
+
   decideStatus() {
     if (!this.isGrounded) {
       this.status = "jumping";

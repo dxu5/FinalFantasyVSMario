@@ -226,7 +226,7 @@ export default {
   ],
   enemies: [
     {
-      name: "dragon",
+      name: "goomba",
       x: 900,
       y: 200,
       x1Limit: 100,
@@ -234,7 +234,7 @@ export default {
       trigger: 200,
     },
     {
-      name: "dragon",
+      name: "goomba",
       x: 1900,
       y: 200,
       x1Limit: 1200,
@@ -242,7 +242,7 @@ export default {
       trigger: 600,
     },
     {
-      name: "dragon",
+      name: "goomba",
       x: 1200,
       y: 200,
       x1Limit: 1200,
@@ -250,7 +250,7 @@ export default {
       trigger: 600,
     },
     {
-      name: "dragon",
+      name: "goomba",
       x: 2900,
       y: 200,
       x1Limit: 2700,
@@ -258,7 +258,7 @@ export default {
       trigger: 2000,
     },
     {
-      name: "dragon",
+      name: "goomba",
       x: 4000,
       y: 200,
       x1Limit: 3950,
@@ -266,7 +266,7 @@ export default {
       trigger: 3500,
     },
     {
-      name: "dragon",
+      name: "goomba",
       x: 5100,
       y: 0,
       x1Limit: 4700,
@@ -274,7 +274,7 @@ export default {
       trigger: 4000,
     },
     {
-      name: "dragon",
+      name: "goomba",
       x: 4700,
       y: 0,
       x1Limit: 4700,

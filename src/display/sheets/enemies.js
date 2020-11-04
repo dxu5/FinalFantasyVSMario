@@ -42,24 +42,6 @@ export default {
       ],
     },
     {
-      SpriteSheet: "dragonFlattened",
-      width: 43,
-      height: 20,
-      sprites: [
-        {
-          name: "flattenedLeft",
-          x: 89,
-          y: 328,
-        },
-        {
-          name: "flattenedRight",
-          type: "flip",
-          x: 89,
-          y: 328,
-        },
-      ],
-    },
-    {
       SpriteSheet: "dragonRegular",
       width: 43,
       height: 39,

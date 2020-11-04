@@ -1,5 +1,5 @@
 import Mario from "./characters/mario.js";
-import Dragon from "./characters/dragon";
+import Goomba from "./characters/goomba";
 import Bullet from "./characters/bullet";
 import Collider from "./collider.js";
 import tilemap from "../display/tile_map";
@@ -53,8 +53,8 @@ export default class Game {
     const enemies = new Set();
     let newEnemy;
     tilemap.enemies.forEach((enemy) => {
-      if (enemy.name === "dragon") {
-        newEnemy = new Dragon(enemy.x, enemy.y, enemy.x1Limit, enemy.x2Limit);
+      if (enemy.name === "goomba") {
+        newEnemy = new Goomba(enemy.x, enemy.y, enemy.x1Limit, enemy.x2Limit);
       } else if (enemy.name === "bullet") {
         newEnemy = new Bullet(enemy.x, enemy.y);
       }

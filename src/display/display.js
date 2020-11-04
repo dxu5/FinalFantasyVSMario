@@ -40,11 +40,21 @@ export default class Display {
       loadedSheets.add("backgroundLastLayer");
     };
     marioImage.onload = function () {
-      const marioSheet = new SpriteSheet(marioImage, 60, 60);
-      marioSprite.sprites.forEach((sprite) => {
-        marioSheet.addSprite(sprite.name, sprite.x, sprite.y);
+      marioSprite.marios.forEach((mario) => {
+        const marioSheet = new SpriteSheet(
+          marioImage,
+          mario.width,
+          mario.height
+        );
+        mario.sprites.forEach((sprite) => {
+          if (sprite.type === "flip") {
+            marioSheet.addSpriteFlipped(sprite.name, sprite.x, sprite.y);
+          } else {
+            marioSheet.addSprite(sprite.name, sprite.x, sprite.y);
+          }
+        });
+        spriteSheets.set(mario.SpriteSheet, marioSheet);
       });
-      spriteSheets.set("mario", marioSheet);
       loadedSheets.add("mario");
     };
     enemiesImage.onload = function () {

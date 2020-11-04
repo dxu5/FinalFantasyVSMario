@@ -1,20 +1,30 @@
 import ObjectEntity from "./object";
 import Jump from "../behaviors/jump";
 import Walk from "../behaviors/walk";
+import Lose from "../behaviors/lose";
 
 export default class Mario extends ObjectEntity {
   constructor() {
     super();
     this.width = 29;
     this.height = 40;
+    this.lives = 2;
     this.addBehavior(new Jump());
+    this.Lose = new Lose();
+    this.addBehavior(this.Lose);
     this.addBehavior(new Walk());
-
     this.status = "idle";
+    this.mario = "regularMario";
     this.facing = "right";
     this.frame = "idleRight";
-    this.miniWalkingRightFrames = ["walkingRight", "idleRight"];
-    this.miniWalkingLeftFrames = ["walkingLeft", "idleLeft"];
+    this.walkRightFrames = ["walkingRight", "idleRight"];
+    this.walkRightFramesMushroom = [
+      "walkingRight1",
+      "walkingRight2",
+      "idleRight",
+    ];
+    this.walkLeftFrames = ["walkingLeft", "idleLeft"];
+    this.walkLeftFramesMushroom = ["walkingLeft1", "walkingLeft2", "idleLeft"];
   }
   update(deltaTime) {
     this.behaviors.forEach((behavior) => {
@@ -23,45 +33,79 @@ export default class Mario extends ObjectEntity {
     this.decideStatus();
   }
 
-  draw(ctx, spriteSheets, camera) {
-    spriteSheets
-      .get("mario")
-      .draw(
-        this.frame,
-        ctx,
-        this.pos.x - camera.pos.x,
-        this.pos.y - camera.pos.y
-      );
-  }
-
   decideStatus() {
+    if (this.pos.y > 400) this.lives = 0;
+    if (this.lives === 0) {
+      this.width = 29;
+      this.height = 40;
+      this.mario = "regularMario";
+      this.status = "ignoreCollisions";
+      if (this.status === "ignoreCollisions" && this.frame !== "lose")
+        this.Lose.start();
+      this.frame = "lose";
+      return;
+    } else if (this.lives === 1) {
+      this.width = 29;
+      this.height = 40;
+      this.mario = "regularMario";
+    } else if (this.lives === 2) {
+      this.width = 34;
+      this.height = 56;
+      this.mario = "mushroomMario";
+    }
+
     if (!this.isGrounded) {
-      this.status = "jumping";
-      if (this.vel.x > 0) {
-        this.facing = "right";
-        this.frame = "jumpingRight";
-      } else if (this.vel.x === 0) {
-        this.frame = this.facing === "right" ? "jumpingRight" : "jumpingLeft";
+      if (this.mario === "regularMario" || this.vel.y < 0) {
+        this.status = "jumping";
+        if (this.vel.x > 0) {
+          this.facing = "right";
+          this.frame = "jumpingRight";
+        } else if (this.vel.x === 0) {
+          this.frame = this.facing === "right" ? "jumpingRight" : "jumpingLeft";
+        } else {
+          this.facing = "left";
+          this.frame = "jumpingLeft";
+        }
       } else {
-        this.facing = "left";
-        this.frame = "jumpingLeft";
+        this.status = "falling";
+        if (this.vel.x > 0) {
+          this.facing = "right";
+          this.frame = "fallingRight";
+        } else if (this.vel.x === 0) {
+          this.frame = this.facing === "right" ? "fallingRight" : "fallingLeft";
+        } else {
+          this.facing = "left";
+          this.frame = "fallingLeft";
+        }
       }
     } else if (this.vel.x > 0) {
       this.status = "walking";
       this.facing = "right";
       const totalDistance = Math.abs(this.walk.distance / 800);
-      const frameIdx = Math.floor(
-        totalDistance % this.miniWalkingRightFrames.length
-      );
-      this.frame = this.miniWalkingRightFrames[frameIdx];
+      if (this.lives === 2) {
+        const frameIdx = Math.floor(
+          totalDistance % this.walkRightFramesMushroom.length
+        );
+        this.frame = this.walkRightFramesMushroom[frameIdx];
+      } else {
+        const frameIdx = Math.floor(
+          totalDistance % this.walkRightFrames.length
+        );
+        this.frame = this.walkRightFrames[frameIdx];
+      }
     } else if (this.vel.x < 0) {
       this.status = "walking";
       this.facing = "left";
       const totalDistance = Math.abs(this.walk.distance / 800);
-      const frameIdx = Math.floor(
-        totalDistance % this.miniWalkingLeftFrames.length
-      );
-      this.frame = this.miniWalkingLeftFrames[frameIdx];
+      if (this.lives === 2) {
+        const frameIdx = Math.floor(
+          totalDistance % this.walkLeftFramesMushroom.length
+        );
+        this.frame = this.walkLeftFramesMushroom[frameIdx];
+      } else {
+        const frameIdx = Math.floor(totalDistance % this.walkLeftFrames.length);
+        this.frame = this.walkLeftFrames[frameIdx];
+      }
     } else {
       if (this.status === "idle") return;
 
@@ -73,5 +117,26 @@ export default class Mario extends ObjectEntity {
         this.status = "idle";
       }
     }
+  }
+
+  draw(ctx, spriteSheets, camera) {
+    ctx.strokeStyle = "red";
+    ctx.beginPath();
+    ctx.rect(
+      this.pos.x - camera.pos.x,
+      this.pos.y - camera.pos.y,
+      this.width,
+      this.height
+    );
+    ctx.stroke();
+
+    spriteSheets
+      .get(this.mario)
+      .draw(
+        this.frame,
+        ctx,
+        this.pos.x - camera.pos.x,
+        this.pos.y - camera.pos.y
+      );
   }
 }

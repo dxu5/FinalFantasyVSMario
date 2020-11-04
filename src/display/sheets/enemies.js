@@ -42,7 +42,7 @@ export default {
       ],
     },
     {
-      SpriteSheet: "dragonRegular",
+      SpriteSheet: "goomba",
       width: 43,
       height: 39,
       sprites: [

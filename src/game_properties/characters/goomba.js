@@ -1,7 +1,7 @@
 import ObjectEntity from "./object";
 import AutoWalk from "../behaviors/auto_walk";
 
-export default class Dragon extends ObjectEntity {
+export default class Goomba extends ObjectEntity {
   constructor(xSpawn, ySpawn, moveLeftLimit, moveRightLimit) {
     super();
     this.pos.set(xSpawn, ySpawn);
@@ -13,7 +13,7 @@ export default class Dragon extends ObjectEntity {
     this.addBehavior(new AutoWalk(moveLeftLimit, moveRightLimit));
     this.stompedCount = 0;
 
-    this.status = "dragonRegular";
+    this.status = "goomba";
     this.facing = "left";
     this.frame = "regularWalkLeft1";
     this.regularWalkLeftFrames = ["regularWalkLeft1", "regularWalkLeft2"];

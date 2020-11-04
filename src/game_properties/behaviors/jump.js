@@ -17,6 +17,7 @@ export default class Jump extends Behavior {
   }
 
   update(mario, deltaTime) {
+    if (mario.frame === "lose") return;
     if (this.duration > 0) {
       mario.vel.y = -this.vel;
       this.duration -= deltaTime;

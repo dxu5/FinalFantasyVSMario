@@ -2,6 +2,7 @@ import ObjectEntity from "./object";
 import Jump from "../behaviors/jump";
 import Walk from "../behaviors/walk";
 import Lose from "../behaviors/lose";
+import Stomp from "../behaviors/stomp";
 
 export default class Mario extends ObjectEntity {
   constructor() {
@@ -9,10 +10,13 @@ export default class Mario extends ObjectEntity {
     this.width = 29;
     this.height = 40;
     this.lives = 2;
+    this.invinciblity = false;
     this.addBehavior(new Jump());
     this.Lose = new Lose();
     this.addBehavior(this.Lose);
     this.addBehavior(new Walk());
+    this.addBehavior(new Stomp());
+    this.addBehavior(new Invincible());
     this.status = "idle";
     this.mario = "regularMario";
     this.facing = "right";
@@ -138,5 +142,13 @@ export default class Mario extends ObjectEntity {
         this.pos.x - camera.pos.x,
         this.pos.y - camera.pos.y
       );
+  }
+  overlaps(object) {
+    return (
+      this.getBottom() > object.getTop() &&
+      this.getTop() < object.getBottom() &&
+      this.getLeft() < object.getRight() &&
+      this.getRight() > object.getLeft()
+    );
   }
 }

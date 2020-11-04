@@ -3,28 +3,27 @@ import Dragon from "./characters/dragon";
 import Bullet from "./characters/bullet";
 import Collider from "./collider.js";
 import tilemap from "../display/tile_map";
+import SpawnEnemies from "./behaviors/spawn_enemies";
 
 export default class Game {
   constructor(height, width) {
     this.height = height;
     this.width = width;
     this.gravity = 20;
-    this.tileSize = 29;
     this.objects = new Set();
     this.mario = new Mario();
     this.objects.add(this.mario);
+    this.addSpawns();
 
-    const dragon = new Dragon(600, 100, 400, 700);
-    const bullet = new Bullet(1200, 50);
-
-    this.objects.add(dragon);
-    this.objects.add(bullet);
+    this.restarting = false;
     this.totalTime = 0;
     this.tileMap = [];
+    this.tileSize = 29;
     this.collider = new Collider(this.tileMap);
     this.setTilemapLayer = this.setTilemapLayer.bind(this);
-    this.restartLevel = this.restartLevel.bind(this);
     this.cameraView = this.cameraView.bind(this);
+    this.restartLevel = this.restartLevel.bind(this);
+    this.checkEnemyCollision = this.checkEnemyCollision.bind(this);
     this.setTilemapLayer();
   }
   update(deltaTime) {
@@ -39,10 +38,31 @@ export default class Game {
       object.vel.y += this.gravity;
       object.pos.y += object.vel.y * deltaTime;
       this.collider.checkY(object);
+      if (object !== this.mario) this.checkEnemyCollision(object);
     });
+
     this.totalTime += deltaTime;
   }
-
+  checkEnemyCollision(object) {
+    if (this.mario.overlaps(object)) {
+      object.collides(this.mario);
+      this.mario.collides(object);
+    }
+  }
+  addSpawns() {
+    const enemies = new Set();
+    let newEnemy;
+    tilemap.enemies.forEach((enemy) => {
+      if (enemy.name === "dragon") {
+        newEnemy = new Dragon(enemy.x, enemy.y, enemy.x1Limit, enemy.x2Limit);
+      } else if (enemy.name === "bullet") {
+        newEnemy = new Bullet(enemy.x, enemy.y);
+      }
+      newEnemy.trigger = enemy.trigger;
+      enemies.add(newEnemy);
+    });
+    this.mario.addBehavior(new SpawnEnemies(this.objects, enemies));
+  }
   setTilemapLayer() {
     tilemap.backgrounds.forEach((background) => {
       background.ranges.forEach((range) => {
@@ -60,7 +80,27 @@ export default class Game {
       });
     });
   }
+  restartLevel(camera) {
+    if (this.mario.status === "ignoreCollisions" && !this.restarting) {
+      this.restarting = true;
+      const game = this;
+      setTimeout(() => {
+        game.removeEnemies();
+        game.mario.lives = 1;
+        game.mario.pos.set(145, 100);
+        camera.pos.x = 0;
 
+        game.addSpawns();
+
+        game.restarting = false;
+      }, 1500);
+    }
+  }
+  removeEnemies() {
+    this.objects.forEach((object) => {
+      if (object !== this.mario) this.objects.delete(object);
+    });
+  }
   setTile(x, y, tile) {
     if (!this.tileMap[x]) this.tileMap[x] = [];
     this.tileMap[x][y] = tile;
@@ -117,19 +157,6 @@ export default class Game {
     let tileName = this.getTile(marioPosX, marioPosY);
     if (tileName) tileName = tileName.name;
     return cameraPanel;
-  }
-  restartLevel(camera) {
-    if (this.mario.status === "ignoreCollisions" && !this.restarting) {
-      this.restarting = true;
-      const mario = this.mario;
-      const game = this;
-      setTimeout(() => {
-        mario.lives = 1;
-        mario.pos.set(145, 100);
-        camera.pos.x = 0;
-        game.restarting = false;
-      }, 1500);
-    }
   }
   getTileIndex(pos) {
     return Math.floor(pos / this.tileSize);

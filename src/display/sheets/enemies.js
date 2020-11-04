@@ -15,7 +15,7 @@ export default {
     {
       SpriteSheet: "ignoreCollisions",
       width: 43,
-      height: 34,
+      height: 39,
       sprites: [
         {
           name: "halfFlattenedWalkLeft1",

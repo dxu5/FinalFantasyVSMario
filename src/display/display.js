@@ -59,7 +59,7 @@ export default class Display {
         backgroundLastLayerImage,
         -this.camera.pos.x / 6,
         0,
-        this.width,
+        this.width * 3,
         this.height
       );
       // this.ctx.drawImage(backgroundLastLayerImage, this.width, this.height);

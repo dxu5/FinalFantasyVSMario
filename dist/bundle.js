@@ -1737,6 +1737,7 @@ var Bullet = /*#__PURE__*/function (_GameObject) {
 
     _this.frame = "bulletLeft";
     _this.status = "ignoreCollisions";
+    _this.audio = new Audio("./hit.mp3");
     _this.falling = false;
     _this.speed = 10000;
     return _this;
@@ -1767,6 +1768,11 @@ var Bullet = /*#__PURE__*/function (_GameObject) {
           this.falling = true;
         } else {
           mario.lives -= 1;
+
+          if (mario.lives === 1) {
+            this.audio.play();
+          }
+
           mario.invincible.start();
           mario.invinciblity = true;
         }

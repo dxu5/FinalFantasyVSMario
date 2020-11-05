@@ -13,6 +13,7 @@ export default class Bullet extends GameObject {
     this.addBehavior(new AutoMove());
     this.frame = "bulletLeft";
     this.status = "ignoreCollisions";
+    this.audio = new Audio("./hit.mp3");
     this.falling = false;
     this.speed = 10000;
   }
@@ -39,6 +40,9 @@ export default class Bullet extends GameObject {
         this.falling = true;
       } else {
         mario.lives -= 1;
+        if (mario.lives === 1) {
+          this.audio.play();
+        }
         mario.invincible.start();
         mario.invinciblity = true;
       }

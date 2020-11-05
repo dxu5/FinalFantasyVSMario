@@ -832,7 +832,7 @@ __webpack_require__.r(__webpack_exports__);
     name: "goomba",
     x: 5100,
     y: 0,
-    x1Limit: 4700,
+    x1Limit: 4985,
     x2Limit: 5120,
     trigger: 4000
   }, {

@@ -12,11 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
   display.loadWorld();
   const gameMain = new GameMain(game, display);
   const modal = document.getElementById("modal");
-  const button = document.getElementById("game-start");
+  const button = document.getElementById("start-btn");
   const audio = document.getElementById("audio");
   button.addEventListener("click", () => {
     modal.style.display = "none";
-    // audio.play();
+    canvas.style.display = "block";
+    audio.play();
+    audio.pause();
     gameMain.start();
   });
 });

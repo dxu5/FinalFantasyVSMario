@@ -6,12 +6,16 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: #e9e7e9;
+  /* background: url("../sky.png");
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: black;
   color: black;
 }
 #canvas {
+  display: none;
   width: 100vw;
-  max-width: 580px;
+  max-width: 700px;
   min-width: 400px;
 }
 
@@ -50,8 +54,8 @@ img {
   background-repeat: no-repeat;
   position: relative;
   z-index: 2;
-  width: 580px;
-  height: 331px;
+  width: 700px;
+  height: 400px;
 }
 .start-btn {
   font-family: "Press Start 2P", cursive;
@@ -79,4 +83,22 @@ img {
   position: absolute;
   top: 52%;
   left: 42%;
+}
+
+.block {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 10vw;
+  bottom: 0;
+  animation: MoveUpDown 1s linear infinite;
+}
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    bottom: 70%;
+  }
+  50% {
+    bottom: 71%;
+  }
 }

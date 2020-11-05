@@ -2738,11 +2738,13 @@ document.addEventListener("DOMContentLoaded", function () {
   display.loadWorld();
   var gameMain = new _game_main_js__WEBPACK_IMPORTED_MODULE_1__["default"](game, display);
   var modal = document.getElementById("modal");
-  var button = document.getElementById("game-start");
+  var button = document.getElementById("start-btn");
   var audio = document.getElementById("audio");
   button.addEventListener("click", function () {
-    modal.style.display = "none"; // audio.play();
-
+    modal.style.display = "none";
+    canvas.style.display = "block";
+    audio.play();
+    audio.pause();
     gameMain.start();
   });
 });

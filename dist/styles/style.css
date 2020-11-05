@@ -43,7 +43,7 @@ img {
 
 #modal {
   background: url("../super_mario_background.jpg");
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: fixed;
   top: 18%;

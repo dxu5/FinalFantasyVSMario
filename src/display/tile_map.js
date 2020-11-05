@@ -246,11 +246,6 @@ export default {
         [159, 3, 6, 2],
       ],
     },
-    // {
-    //   title: "greenpipe",
-    //   type: "ground",
-    //   ranges: [[5, 1, 11, 1]],
-    // },
   ],
   enemies: [
     {
@@ -265,7 +260,7 @@ export default {
       name: "goomba",
       x: 1900,
       y: 200,
-      x1Limit: 1200,
+      x1Limit: 1400,
       x2Limit: 1900,
       trigger: 600,
     },
@@ -273,7 +268,7 @@ export default {
       name: "goomba",
       x: 1200,
       y: 200,
-      x1Limit: 1200,
+      x1Limit: 1100,
       x2Limit: 1900,
       trigger: 600,
     },

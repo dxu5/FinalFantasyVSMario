@@ -792,12 +792,7 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     tile: "transparent",
     ranges: [[79, 14, 12, 2], [111, 2, 12, 2], [125, 5, 12, 2], [136, 4, 10, 2], [146, 3, 10, 4], [159, 3, 6, 2]]
-  } // {
-  //   title: "greenpipe",
-  //   type: "ground",
-  //   ranges: [[5, 1, 11, 1]],
-  // },
-  ],
+  }],
   enemies: [{
     name: "goomba",
     x: 900,
@@ -809,14 +804,14 @@ __webpack_require__.r(__webpack_exports__);
     name: "goomba",
     x: 1900,
     y: 200,
-    x1Limit: 1200,
+    x1Limit: 1400,
     x2Limit: 1900,
     trigger: 600
   }, {
     name: "goomba",
     x: 1200,
     y: 200,
-    x1Limit: 1200,
+    x1Limit: 1100,
     x2Limit: 1900,
     trigger: 600
   }, {

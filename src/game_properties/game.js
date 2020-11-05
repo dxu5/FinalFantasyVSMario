@@ -122,7 +122,6 @@ export default class Game {
     const panelCtx = cameraPanel.getContext("2d");
     const columnStart = this.getTileIndex(camera.pos.x);
     const columnEnd = columnStart + this.getTileIndex(camera.width);
-
     for (let x = columnStart; x <= columnEnd; x++) {
       const column = this.tileMap[x];
       if (column) {

@@ -81,44 +81,24 @@ export default {
       y: 0,
     },
     {
-      name: "mysteryBox1",
-      x: 173.3,
-      y: 181.3,
-    },
-    {
-      name: "mysteryBox2",
-      x: 190.3,
-      y: 181.3,
-    },
-    {
-      name: "mysteryBox3",
-      x: 207.3,
-      y: 181.3,
-    },
-    {
-      name: "mysteryBox4",
-      x: 224.3,
-      y: 181.3,
-    },
-    {
       name: "grass1",
-      x: 90,
-      y: 464,
+      x: 0,
+      y: 180,
     },
     {
       name: "grass2",
-      x: 124,
-      y: 464,
+      x: 20,
+      y: 180,
     },
     {
       name: "grass3",
-      x: 158,
-      y: 464,
+      x: 20,
+      y: 195,
     },
     {
       name: "grass4",
-      x: 192,
-      y: 464,
+      x: 0,
+      y: 195,
     },
     {
       name: "singlePlatform",

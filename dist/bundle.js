@@ -1355,6 +1355,7 @@ var Lose = /*#__PURE__*/function (_Behavior) {
     _this.maxDuration = 0.3;
     _this.vel = 300;
     _this.duration = 0;
+    _this.audio = new Audio("./die.wav");
     return _this;
   }
 
@@ -1367,6 +1368,7 @@ var Lose = /*#__PURE__*/function (_Behavior) {
     key: "update",
     value: function update(mario, deltaTime) {
       if (this.duration > 0) {
+        this.audio.play();
         mario.vel.y = -this.vel;
         this.duration -= deltaTime;
       }
@@ -2722,7 +2724,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var game = new _game_properties_game_js__WEBPACK_IMPORTED_MODULE_0__["default"](height, width);
   var display = new _display_display_js__WEBPACK_IMPORTED_MODULE_2__["default"](canvas, height, width);
   var gameMain = new _game_main_js__WEBPACK_IMPORTED_MODULE_1__["default"](game, display);
-  gameMain.start();
+  var modal = document.getElementById("modal");
+  var button = document.getElementById("game-start");
+  button.addEventListener("click", function (e) {
+    modal.style.display = "none";
+    gameMain.start();
+  });
 });
 
 /***/ }),

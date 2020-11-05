@@ -40,3 +40,13 @@ img {
   flex-direction: row;
   align-items: flex-start;
 }
+
+#modal {
+  background: black;
+  position: fixed;
+  display: flex;
+  top: 10%;
+  z-index: 2;
+  width: 700px;
+  height: 400px;
+}

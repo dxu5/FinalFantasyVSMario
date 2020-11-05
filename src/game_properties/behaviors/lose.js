@@ -5,6 +5,7 @@ export default class Lose extends Behavior {
     this.maxDuration = 0.3;
     this.vel = 300;
     this.duration = 0;
+    this.audio = new Audio("./die.wav");
   }
 
   start() {
@@ -12,6 +13,7 @@ export default class Lose extends Behavior {
   }
   update(mario, deltaTime) {
     if (this.duration > 0) {
+      this.audio.play();
       mario.vel.y = -this.vel;
       this.duration -= deltaTime;
     }

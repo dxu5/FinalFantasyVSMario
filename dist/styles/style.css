@@ -103,13 +103,22 @@ img {
   animation: MoveUpDown 1s linear infinite;
 }
 
+.flower {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 5vw;
+  bottom: 0;
+  animation: MoveUpDown5 1.2s linear infinite;
+}
+
 .greenmushroom {
   position: absolute;
   width: 100px;
   height: 100px;
   left: 15vw;
   bottom: 0;
-  animation: MoveUpDown4 1s linear infinite;
+  animation: MoveUpDown4 1.7s linear infinite;
 }
 
 .star {
@@ -119,6 +128,16 @@ img {
   right: 15vw;
   bottom: 0;
   animation: MoveUpDown2 2s linear infinite;
+}
+
+@keyframes MoveUpDown5 {
+  0%,
+  100% {
+    bottom: 10%;
+  }
+  50% {
+    bottom: 12%;
+  }
 }
 
 @keyframes MoveUpDown4 {

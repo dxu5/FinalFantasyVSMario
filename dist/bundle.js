@@ -1370,6 +1370,7 @@ var Lose = /*#__PURE__*/function (_Behavior) {
       if (this.duration > 0) {
         var background = document.getElementById("audio");
         background.pause();
+        background.currentTime = 0;
         this.audio.play();
         mario.vel.y = -this.vel;
         this.duration -= deltaTime;
@@ -2589,8 +2590,10 @@ var Game = /*#__PURE__*/function () {
           game.mario.pos.set(145, 100);
           game.mario.invincible.cancel();
           camera.pos.x = 0;
-          var audio = document.getElementById("audio");
-          audio.play();
+          setTimeout(function () {
+            var audio = document.getElementById("audio");
+            audio.play();
+          }, 800);
           game.addSpawns();
           game.restarting = false;
         }, 2500);

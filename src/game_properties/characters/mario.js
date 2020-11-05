@@ -31,7 +31,6 @@ export default class Mario extends ObjectEntity {
     ];
     this.walkLeftFrames = ["walkingLeft", "idleLeft"];
     this.walkLeftFramesMushroom = ["walkingLeft1", "walkingLeft2", "idleLeft"];
-    this.audio = new Audio("./hit.mp3");
   }
   update(deltaTime, totalTime) {
     this.behaviors.forEach((behavior) => {

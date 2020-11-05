@@ -2011,7 +2011,6 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
     _this.walkRightFramesMushroom = ["walkingRight1", "walkingRight2", "idleRight"];
     _this.walkLeftFrames = ["walkingLeft", "idleLeft"];
     _this.walkLeftFramesMushroom = ["walkingLeft1", "walkingLeft2", "idleLeft"];
-    _this.audio = new Audio("./hit.mp3");
     return _this;
   }
 
@@ -2740,8 +2739,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var gameMain = new _game_main_js__WEBPACK_IMPORTED_MODULE_1__["default"](game, display);
   var modal = document.getElementById("modal");
   var button = document.getElementById("game-start");
+  var audio = document.getElementById("audio");
   button.addEventListener("click", function () {
     modal.style.display = "none";
+    audio.play();
     gameMain.start();
   });
 });

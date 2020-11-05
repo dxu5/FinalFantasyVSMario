@@ -13,8 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameMain = new GameMain(game, display);
   const modal = document.getElementById("modal");
   const button = document.getElementById("game-start");
+  const audio = document.getElementById("audio");
   button.addEventListener("click", () => {
     modal.style.display = "none";
+    audio.play();
     gameMain.start();
   });
 });

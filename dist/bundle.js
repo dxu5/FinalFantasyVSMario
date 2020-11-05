@@ -2741,8 +2741,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var button = document.getElementById("game-start");
   var audio = document.getElementById("audio");
   button.addEventListener("click", function () {
-    modal.style.display = "none";
-    audio.play();
+    modal.style.display = "none"; // audio.play();
+
     gameMain.start();
   });
 });

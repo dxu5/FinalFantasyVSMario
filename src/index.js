@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const audio = document.getElementById("audio");
   button.addEventListener("click", () => {
     modal.style.display = "none";
-    audio.play();
+    // audio.play();
     gameMain.start();
   });
 });

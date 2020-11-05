@@ -9,10 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const canvas = document.getElementById("canvas");
   const game = new Game(height, width);
   const display = new Display(canvas, height, width);
+  display.loadWorld();
   const gameMain = new GameMain(game, display);
   const modal = document.getElementById("modal");
   const button = document.getElementById("game-start");
-  button.addEventListener("click", (e) => {
+  button.addEventListener("click", () => {
     modal.style.display = "none";
     gameMain.start();
   });

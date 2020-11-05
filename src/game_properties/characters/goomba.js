@@ -5,6 +5,7 @@ export default class Goomba extends ObjectEntity {
   constructor(xSpawn, ySpawn, moveLeftLimit, moveRightLimit) {
     super();
     this.pos.set(xSpawn, ySpawn);
+    this.audio = new Audio("./hit.mp3");
 
     this.width = 43;
     this.height = 40;
@@ -36,6 +37,9 @@ export default class Goomba extends ObjectEntity {
         this.stompedCount += 1;
       } else {
         mario.lives -= 1;
+        if (mario.lives === 1) {
+          this.audio.play();
+        }
         mario.invincible.start();
         mario.invinciblity = true;
       }

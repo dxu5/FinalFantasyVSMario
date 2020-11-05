@@ -1837,6 +1837,7 @@ var Goomba = /*#__PURE__*/function (_ObjectEntity) {
 
     _this.pos.set(xSpawn, ySpawn);
 
+    _this.audio = new Audio("./hit.mp3");
     _this.width = 43;
     _this.height = 40;
     _this.speed = 8000;
@@ -1866,6 +1867,11 @@ var Goomba = /*#__PURE__*/function (_ObjectEntity) {
           this.stompedCount += 1;
         } else {
           mario.lives -= 1;
+
+          if (mario.lives === 1) {
+            this.audio.play();
+          }
+
           mario.invincible.start();
           mario.invinciblity = true;
         }
@@ -1999,6 +2005,7 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
     _this.walkRightFramesMushroom = ["walkingRight1", "walkingRight2", "idleRight"];
     _this.walkLeftFrames = ["walkingLeft", "idleLeft"];
     _this.walkLeftFramesMushroom = ["walkingLeft1", "walkingLeft2", "idleLeft"];
+    _this.audio = new Audio("./hit.mp3");
     return _this;
   }
 
@@ -2723,10 +2730,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var canvas = document.getElementById("canvas");
   var game = new _game_properties_game_js__WEBPACK_IMPORTED_MODULE_0__["default"](height, width);
   var display = new _display_display_js__WEBPACK_IMPORTED_MODULE_2__["default"](canvas, height, width);
+  display.loadWorld();
   var gameMain = new _game_main_js__WEBPACK_IMPORTED_MODULE_1__["default"](game, display);
   var modal = document.getElementById("modal");
   var button = document.getElementById("game-start");
-  button.addEventListener("click", function (e) {
+  button.addEventListener("click", function () {
     modal.style.display = "none";
     gameMain.start();
   });

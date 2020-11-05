@@ -10,6 +10,5 @@ document.addEventListener("DOMContentLoaded", function () {
   const game = new Game(height, width);
   const display = new Display(canvas, height, width);
   const gameMain = new GameMain(game, display);
-
   gameMain.start();
 });

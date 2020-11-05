@@ -1567,6 +1567,7 @@ var Stomp = /*#__PURE__*/function (_Behavior) {
     _classCallCheck(this, Stomp);
 
     _this = _super.call(this, "stomp");
+    _this.audio = new Audio("./stomp.wav");
     _this.bouncing = false;
     _this.bounceSpeed = 400;
     return _this;
@@ -1575,6 +1576,7 @@ var Stomp = /*#__PURE__*/function (_Behavior) {
   _createClass(Stomp, [{
     key: "bounce",
     value: function bounce() {
+      this.audio.play();
       this.bouncing = true;
     }
   }, {
@@ -1979,6 +1981,7 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
 
     _this.addBehavior(new _behaviors_invincible__WEBPACK_IMPORTED_MODULE_5__["default"]());
 
+    _this.audio = new Audio("./jump.wav");
     _this.status = "idle";
     _this.mario = "regularMario";
     _this.facing = "right";
@@ -2026,6 +2029,7 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
       if (!this.isGrounded) {
         if (this.mario === "regularMario" || this.vel.y < 0) {
           this.status = "jumping";
+          this.audio.play();
 
           if (this.vel.x > 0) {
             this.facing = "right";

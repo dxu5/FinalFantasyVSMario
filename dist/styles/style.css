@@ -91,14 +91,53 @@ img {
   height: 100px;
   left: 10vw;
   bottom: 0;
+  animation: MoveUpDown3 1.5s linear infinite;
+}
+
+.mushroom {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 10vw;
+  bottom: 0;
   animation: MoveUpDown 1s linear infinite;
 }
+
+.star {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 15vw;
+  bottom: 0;
+  animation: MoveUpDown2 2s linear infinite;
+}
+
+@keyframes MoveUpDown2 {
+  0%,
+  100% {
+    bottom: 40%;
+  }
+  50% {
+    bottom: 42%;
+  }
+}
+
 @keyframes MoveUpDown {
   0%,
   100% {
     bottom: 70%;
   }
   50% {
-    bottom: 71%;
+    bottom: 72%;
+  }
+}
+
+@keyframes MoveUpDown3 {
+  0%,
+  100% {
+    bottom: 60%;
+  }
+  50% {
+    bottom: 62%;
   }
 }

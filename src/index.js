@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "none";
     canvas.style.display = "block";
     audio.play();
-    audio.pause();
+    // audio.pause();
     gameMain.start();
   });
 });

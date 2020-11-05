@@ -1368,6 +1368,8 @@ var Lose = /*#__PURE__*/function (_Behavior) {
     key: "update",
     value: function update(mario, deltaTime) {
       if (this.duration > 0) {
+        var background = document.getElementById("audio");
+        background.pause();
         this.audio.play();
         mario.vel.y = -this.vel;
         this.duration -= deltaTime;
@@ -2587,9 +2589,11 @@ var Game = /*#__PURE__*/function () {
           game.mario.pos.set(145, 100);
           game.mario.invincible.cancel();
           camera.pos.x = 0;
+          var audio = document.getElementById("audio");
+          audio.play();
           game.addSpawns();
           game.restarting = false;
-        }, 1500);
+        }, 2500);
       }
     }
   }, {
@@ -2743,8 +2747,8 @@ document.addEventListener("DOMContentLoaded", function () {
   button.addEventListener("click", function () {
     modal.style.display = "none";
     canvas.style.display = "block";
-    audio.play();
-    audio.pause();
+    audio.play(); // audio.pause();
+
     gameMain.start();
   });
 });

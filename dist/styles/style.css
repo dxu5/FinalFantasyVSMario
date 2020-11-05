@@ -89,7 +89,7 @@ img {
   position: absolute;
   width: 100px;
   height: 100px;
-  left: 10vw;
+  left: 5vw;
   bottom: 0;
   animation: MoveUpDown3 1.5s linear infinite;
 }
@@ -103,6 +103,15 @@ img {
   animation: MoveUpDown 1s linear infinite;
 }
 
+.greenmushroom {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 15vw;
+  bottom: 0;
+  animation: MoveUpDown4 1s linear infinite;
+}
+
 .star {
   position: absolute;
   width: 100px;
@@ -110,6 +119,16 @@ img {
   right: 15vw;
   bottom: 0;
   animation: MoveUpDown2 2s linear infinite;
+}
+
+@keyframes MoveUpDown4 {
+  0%,
+  100% {
+    bottom: 30%;
+  }
+  50% {
+    bottom: 32%;
+  }
 }
 
 @keyframes MoveUpDown2 {

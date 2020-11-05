@@ -90,11 +90,13 @@ export default class Game {
         game.mario.pos.set(145, 100);
         game.mario.invincible.cancel();
         camera.pos.x = 0;
+        let audio = document.getElementById("audio");
+        audio.play();
 
         game.addSpawns();
 
         game.restarting = false;
-      }, 1500);
+      }, 2500);
     }
   }
   removeEnemies() {

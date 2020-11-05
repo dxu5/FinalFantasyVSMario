@@ -13,6 +13,8 @@ export default class Lose extends Behavior {
   }
   update(mario, deltaTime) {
     if (this.duration > 0) {
+      let background = document.getElementById("audio");
+      background.pause();
       this.audio.play();
       mario.vel.y = -this.vel;
       this.duration -= deltaTime;

@@ -1264,6 +1264,7 @@ var Jump = /*#__PURE__*/function (_Behavior) {
     _this.vel = 300;
     _this.duration = 0;
     _this.isGrounded = true;
+    _this.audio = new Audio("./jump.wav");
     return _this;
   }
 
@@ -1284,6 +1285,10 @@ var Jump = /*#__PURE__*/function (_Behavior) {
       if (mario.frame === "lose") return;
 
       if (this.duration > 0) {
+        if (mario.bouncing === false) {
+          this.audio.play();
+        }
+
         mario.vel.y = -this.vel;
         this.duration -= deltaTime;
       }
@@ -1576,15 +1581,17 @@ var Stomp = /*#__PURE__*/function (_Behavior) {
   _createClass(Stomp, [{
     key: "bounce",
     value: function bounce() {
-      this.audio.play();
       this.bouncing = true;
     }
   }, {
     key: "update",
     value: function update(mario) {
       if (this.bouncing) {
+        mario.bouncing = true;
+        this.audio.play();
         mario.vel.y = -this.bounceSpeed;
         this.bouncing = false;
+        mario.bouncing = false;
       }
     }
   }]);
@@ -1967,6 +1974,7 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
     _this.width = 29;
     _this.height = 40;
     _this.lives = 2;
+    _this.bouncing = false;
     _this.invinciblity = false;
 
     _this.addBehavior(new _behaviors_jump__WEBPACK_IMPORTED_MODULE_1__["default"]());
@@ -1981,7 +1989,6 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
 
     _this.addBehavior(new _behaviors_invincible__WEBPACK_IMPORTED_MODULE_5__["default"]());
 
-    _this.audio = new Audio("./jump.wav");
     _this.status = "idle";
     _this.mario = "regularMario";
     _this.facing = "right";
@@ -2029,7 +2036,6 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
       if (!this.isGrounded) {
         if (this.mario === "regularMario" || this.vel.y < 0) {
           this.status = "jumping";
-          this.audio.play();
 
           if (this.vel.x > 0) {
             this.facing = "right";

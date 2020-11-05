@@ -7,13 +7,15 @@ export default class Stomp extends Behavior {
     this.bounceSpeed = 400;
   }
   bounce() {
-    this.audio.play();
     this.bouncing = true;
   }
   update(mario) {
     if (this.bouncing) {
+      mario.bouncing = true;
+      this.audio.play();
       mario.vel.y = -this.bounceSpeed;
       this.bouncing = false;
+      mario.bouncing = false;
     }
   }
 }

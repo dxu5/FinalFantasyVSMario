@@ -11,6 +11,7 @@ export default class Mario extends ObjectEntity {
     this.width = 29;
     this.height = 40;
     this.lives = 2;
+    this.bouncing = false;
     this.invinciblity = false;
     this.addBehavior(new Jump());
     this.Lose = new Lose();
@@ -18,7 +19,6 @@ export default class Mario extends ObjectEntity {
     this.addBehavior(new Walk());
     this.addBehavior(new Stomp());
     this.addBehavior(new Invincible());
-    this.audio = new Audio("./jump.wav");
     this.status = "idle";
     this.mario = "regularMario";
     this.facing = "right";
@@ -63,7 +63,6 @@ export default class Mario extends ObjectEntity {
     if (!this.isGrounded) {
       if (this.mario === "regularMario" || this.vel.y < 0) {
         this.status = "jumping";
-        this.audio.play();
         if (this.vel.x > 0) {
           this.facing = "right";
           this.frame = "jumpingRight";

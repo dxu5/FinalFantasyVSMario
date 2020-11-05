@@ -6,6 +6,7 @@ export default class Jump extends Behavior {
     this.vel = 300;
     this.duration = 0;
     this.isGrounded = true;
+    this.audio = new Audio("./jump.wav");
   }
 
   start() {
@@ -19,6 +20,9 @@ export default class Jump extends Behavior {
   update(mario, deltaTime) {
     if (mario.frame === "lose") return;
     if (this.duration > 0) {
+      if (mario.bouncing === false) {
+        this.audio.play();
+      }
       mario.vel.y = -this.vel;
       this.duration -= deltaTime;
     }

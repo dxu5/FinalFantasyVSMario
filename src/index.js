@@ -14,11 +14,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("modal");
   const button = document.getElementById("start-btn");
   const audio = document.getElementById("audio");
+  let play = false;
   button.addEventListener("click", () => {
     modal.style.display = "none";
     canvas.style.display = "block";
     audio.play();
+    play = true;
     // audio.pause();
     gameMain.start();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.keyCode === 77) {
+      if (play === true) {
+        audio.pause();
+        play = false;
+      } else {
+        audio.play();
+        play = true;
+      }
+    }
   });
 });

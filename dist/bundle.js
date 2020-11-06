@@ -2743,12 +2743,25 @@ document.addEventListener("DOMContentLoaded", function () {
   var modal = document.getElementById("modal");
   var button = document.getElementById("start-btn");
   var audio = document.getElementById("audio");
+  var play = false;
   button.addEventListener("click", function () {
     modal.style.display = "none";
     canvas.style.display = "block";
-    audio.play(); // audio.pause();
+    audio.play();
+    play = true; // audio.pause();
 
     gameMain.start();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.keyCode === 77) {
+      if (play === true) {
+        audio.pause();
+        play = false;
+      } else {
+        audio.play();
+        play = true;
+      }
+    }
   });
 });
 

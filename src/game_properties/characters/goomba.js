@@ -74,15 +74,6 @@ export default class Goomba extends ObjectEntity {
   }
 
   draw(ctx, spriteSheets, camera) {
-    ctx.strokeStyle = "red";
-    ctx.beginPath();
-    ctx.rect(
-      this.pos.x - camera.pos.x,
-      this.pos.y - camera.pos.y,
-      this.width,
-      this.height
-    );
-    ctx.stroke();
     spriteSheets
       .get(this.status)
       .draw(

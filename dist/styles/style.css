@@ -20,7 +20,7 @@ body {
 }
 
 img {
-  margin-top: 3em;
+  margin-top: 2em;
   margin-bottom: 1em;
 }
 
@@ -181,16 +181,29 @@ img {
 }
 
 .total-instructions {
+  width: 800px;
   color: white;
   font-family: "Press Start 2P", cursive;
   border: 1px solid white;
   border-radius: 5px;
+  margin-top: 1em;
 }
 
 .instructions {
+  padding-top: 1em;
+  text-decoration: underline;
   text-align: center;
 }
 
 .movement {
-  width: 300px;
+  width: 200px;
+  line-height: 20px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.flex-instructions {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }

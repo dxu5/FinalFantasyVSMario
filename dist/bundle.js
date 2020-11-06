@@ -125,12 +125,6 @@ var Controller = /*#__PURE__*/function () {
       this.mapRightMove("KeyD");
       this.mapLeftMove("ArrowLeft");
       this.mapLeftMove("KeyA");
-      var togglePause = this.gameMain.togglePause;
-      this.map("KeyP", function (keyState) {
-        if (keyState) {
-          togglePause();
-        }
-      });
     }
   }, {
     key: "mapRightMove",
@@ -941,8 +935,6 @@ var GameMain = /*#__PURE__*/function () {
     this.pauseStatus = false;
     this.animate = this.animate.bind(this);
     this.run = this.run.bind(this);
-    this.pause = this.pause.bind(this);
-    this.togglePause = this.togglePause.bind(this);
   }
 
   _createClass(GameMain, [{
@@ -954,7 +946,6 @@ var GameMain = /*#__PURE__*/function () {
       this.display.loadWorld();
       var controller = new _controller_js__WEBPACK_IMPORTED_MODULE_0__["default"](this);
       controller.listenForInput();
-      mouseDebugger(this.display.canvas, this.game.mario, this.display.camera);
       this.deltaTime = 1 / 60;
       this.run();
     }
@@ -972,13 +963,6 @@ var GameMain = /*#__PURE__*/function () {
     value: function run() {
       this.pauseStatus = false;
       this.id = requestAnimationFrame(this.animate);
-    }
-  }, {
-    key: "pause",
-    value: function pause() {
-      this.pauseStatus = true;
-      cancelAnimationFrame(this.id);
-      this.display.drawPauseScreen();
     }
   }, {
     key: "animate",
@@ -1001,25 +985,6 @@ var GameMain = /*#__PURE__*/function () {
 }();
 
 
-
-function mouseDebugger(canvas, entity, camera) {
-  var lastEvent;
-  ["mousedown", "mousemove"].forEach(function (eventName) {
-    canvas.addEventListener(eventName, function (event) {
-      if (event.buttons === 1) {
-        entity.vel.set(0, 0);
-        entity.pos.set(event.offsetX + camera.pos.x, event.offsetY + camera.pos.y);
-      } else if (event.buttons === 2 && lastEvent && lastEvent.buttons === 2 && lastEvent.type === "mousemove") {
-        camera.pos.x -= event.offsetX - lastEvent.offsetX;
-      }
-
-      lastEvent = event;
-    });
-  });
-  canvas.addEventListener("contextmenu", function (event) {
-    event.preventDefault();
-  });
-}
 
 /***/ }),
 

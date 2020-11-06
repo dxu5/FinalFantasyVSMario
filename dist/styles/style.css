@@ -179,3 +179,18 @@ img {
     bottom: 62%;
   }
 }
+
+.total-instructions {
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.instructions {
+  text-align: center;
+}
+
+.movement {
+  width: 300px;
+}

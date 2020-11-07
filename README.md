@@ -1,6 +1,6 @@
 # Background
 
-<p align="center"><a target="_blank" href="https://dlack.herokuapp.com/#/"><img src="./dist/game_title.png" width=500px/></a></p>
+<p align="center"><a target="_blank" href="https://dxu5.github.io/FinalFantasyVSMario/dist/"><img src="./dist/game_title.png" width=500px/></a></p>
 
 FinalFantasyVSMario aims to provide a smooth, interactive, and challenging side-scroller game based on the popular title Super Mario by Nintendo. Players try to reach the end of the level, stomping and dodging enemies when they appear while trying not to lose all of their lives.
 
@@ -8,7 +8,7 @@ Highlights: One of the biggest highlights of the project is the modular approach
 
 FinalFantasyVSMario is built without any libraries, utilizing only vanilla JavaScript, HTML5 Canvas, and CSS3.
 
-Checkout [Basil Live](https://basil-mern.herokuapp.com/)!
+Checkout [Final Fantasy vs Mario Live](https://dxu5.github.io/FinalFantasyVSMario/dist/)!
 
 # MVP
 

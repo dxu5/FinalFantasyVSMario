@@ -90,10 +90,12 @@ export default class Game {
         game.mario.pos.set(145, 100);
         game.mario.invincible.cancel();
         camera.pos.x = 0;
-        setTimeout(() => {
-          let audio = document.getElementById("audio");
-          audio.play();
-        }, 800);
+        let audio = document.getElementById("audio");
+        if (!audio.paused) {
+          setTimeout(() => {
+            audio.play();
+          }, 800);
+        }
 
         game.addSpawns();
 

@@ -1334,8 +1334,12 @@ var Lose = /*#__PURE__*/function (_Behavior) {
     value: function update(mario, deltaTime) {
       if (this.duration > 0) {
         var background = document.getElementById("audio");
-        background.pause();
-        background.currentTime = 0;
+
+        if (!background.paused) {
+          background.pause();
+          background.currentTime = 0;
+        }
+
         this.audio.play();
         mario.vel.y = -this.vel;
         this.duration -= deltaTime;
@@ -2552,10 +2556,14 @@ var Game = /*#__PURE__*/function () {
           game.mario.pos.set(145, 100);
           game.mario.invincible.cancel();
           camera.pos.x = 0;
-          setTimeout(function () {
-            var audio = document.getElementById("audio");
-            audio.play();
-          }, 800);
+          var audio = document.getElementById("audio");
+
+          if (!audio.paused) {
+            setTimeout(function () {
+              audio.play();
+            }, 800);
+          }
+
           game.addSpawns();
           game.restarting = false;
         }, 2500);

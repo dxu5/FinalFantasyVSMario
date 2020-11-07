@@ -5,7 +5,7 @@ export default class Lose extends Behavior {
     this.maxDuration = 0.3;
     this.vel = 300;
     this.duration = 0;
-    this.audio = new Audio("./die.wav");
+    this.audio = new Audio("./game-over.mp3");
   }
 
   start() {

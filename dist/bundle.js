@@ -1358,7 +1358,7 @@ var Lose = /*#__PURE__*/function (_Behavior) {
     _this.maxDuration = 0.3;
     _this.vel = 300;
     _this.duration = 0;
-    _this.audio = new Audio("./die.wav");
+    _this.audio = new Audio("./game-over.mp3");
     return _this;
   }
 

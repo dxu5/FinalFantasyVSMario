@@ -1,6 +1,6 @@
 # Background
 
-![splashLogo2](https://user-images.githubusercontent.com/60491357/97758682-a89d7f80-1abc-11eb-992c-179e86f6a65a.png)
+<p align="center"><a target="_blank" href="https://dlack.herokuapp.com/#/"><img src="./dist/game_title.png" width=500px/></a></p>
 
 FinalFantasyVSMario aims to provide a smooth, interactive, and challenging side-scroller game based on the popular title Super Mario by Nintendo. Players try to reach the end of the level, stomping and dodging enemies when they appear while trying not to lose all of their lives.
 

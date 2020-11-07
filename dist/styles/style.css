@@ -49,7 +49,7 @@ img {
 }
 
 #modal {
-  background: url("../super_mario_background.jpg");
+  background: url("../super_mario_background.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   position: relative;
@@ -91,6 +91,7 @@ img {
   height: 100px;
   left: 5vw;
   bottom: 0;
+  transform: scaleX(-1);
   animation: MoveUpDown3 1.5s linear infinite;
 }
 
@@ -118,6 +119,7 @@ img {
   height: 100px;
   left: 15vw;
   bottom: 0;
+  transform: scaleX(-1);
   animation: MoveUpDown4 1.7s linear infinite;
 }
 
@@ -206,4 +208,22 @@ img {
   justify-content: space-around;
   margin-bottom: 1em;
   margin-top: 1em;
+}
+
+.title {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+}
+
+.versus {
+  margin-bottom: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.final {
+  height: 52px;
+  width: 241px;
 }

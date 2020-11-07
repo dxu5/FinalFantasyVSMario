@@ -74,8 +74,8 @@ export default {
         },
         {
           name: "lose",
-          x: 9,
-          y: 38,
+          x: 60,
+          y: 5,
         },
         {
           name: "walkingRight",

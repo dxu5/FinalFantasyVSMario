@@ -591,8 +591,8 @@ __webpack_require__.r(__webpack_exports__);
       y: 5
     }, {
       name: "lose",
-      x: 9,
-      y: 38
+      x: 60,
+      y: 5
     }, {
       name: "walkingRight",
       x: 30,

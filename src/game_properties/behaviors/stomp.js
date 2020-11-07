@@ -2,7 +2,7 @@ import Behavior from "./behavior";
 export default class Stomp extends Behavior {
   constructor() {
     super("stomp");
-    this.audio = new Audio("./stomp.wav");
+    this.audio = new Audio("./fire.mp3");
     this.bouncing = false;
     this.bounceSpeed = 400;
   }

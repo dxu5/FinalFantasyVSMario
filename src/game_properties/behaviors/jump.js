@@ -6,7 +6,7 @@ export default class Jump extends Behavior {
     this.vel = 300;
     this.duration = 0;
     this.isGrounded = true;
-    this.audio = new Audio("./jump.wav");
+    this.audio = new Audio("./jumping.wav");
   }
 
   start() {

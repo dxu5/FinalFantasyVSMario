@@ -1267,7 +1267,7 @@ var Jump = /*#__PURE__*/function (_Behavior) {
     _this.vel = 300;
     _this.duration = 0;
     _this.isGrounded = true;
-    _this.audio = new Audio("./jump.wav");
+    _this.audio = new Audio("./jumping.wav");
     return _this;
   }
 
@@ -1580,7 +1580,7 @@ var Stomp = /*#__PURE__*/function (_Behavior) {
     _classCallCheck(this, Stomp);
 
     _this = _super.call(this, "stomp");
-    _this.audio = new Audio("./stomp.wav");
+    _this.audio = new Audio("./fire.mp3");
     _this.bouncing = false;
     _this.bounceSpeed = 400;
     return _this;

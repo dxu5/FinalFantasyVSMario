@@ -1,5 +1,5 @@
 import backgroundAssets from "./imgs/background_assets.png";
-import mario from "./imgs/mario.png";
+import mario from "./imgs/sprites.png";
 import enemies from "./imgs/enemies.png";
 import backgroundFirstLayer from "./imgs/backgrounds-2.png";
 

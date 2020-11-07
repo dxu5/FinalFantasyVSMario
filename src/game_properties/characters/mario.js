@@ -42,8 +42,8 @@ export default class Mario extends ObjectEntity {
   decideStatus(totalTime) {
     if (this.pos.y > 400) this.lives = 0;
     if (this.lives === 0) {
-      this.width = 29;
-      this.height = 40;
+      this.width = 26;
+      this.height = 33;
       this.mario = "regularMario";
       this.status = "ignoreCollisions";
       if (this.status === "ignoreCollisions" && this.frame !== "lose")
@@ -51,8 +51,8 @@ export default class Mario extends ObjectEntity {
       this.frame = "lose";
       return;
     } else if (this.lives === 1) {
-      this.width = 29;
-      this.height = 40;
+      this.width = 26;
+      this.height = 33;
       this.mario = "regularMario";
     } else if (this.lives === 2) {
       this.width = 34;
@@ -129,6 +129,15 @@ export default class Mario extends ObjectEntity {
   }
 
   draw(ctx, spriteSheets, camera) {
+    ctx.strokeStyle = "red";
+    ctx.beginPath();
+    ctx.rect(
+      this.pos.x - camera.pos.x,
+      this.pos.y - camera.pos.y,
+      this.width,
+      this.height
+    );
+    ctx.stroke();
     spriteSheets
       .get(this.mario)
       .draw(

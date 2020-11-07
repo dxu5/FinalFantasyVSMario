@@ -534,89 +534,92 @@ __webpack_require__.r(__webpack_exports__);
   marios: [{
     SpriteSheet: "mushroomMario",
     width: 36,
-    height: 56,
+    height: 54,
     sprites: [{
       name: "idleRight",
-      x: 207,
-      y: 76
+      type: "flip",
+      x: 118,
+      y: -2
     }, {
       name: "walkingRight1",
-      x: 327,
-      y: 76
+      type: "flip",
+      x: 148,
+      y: -2
     }, {
       name: "walkingRight2",
-      x: 367,
-      y: 76
+      type: "flip",
+      x: 118,
+      y: 28
     }, {
       name: "idleLeft",
-      type: "flip",
-      x: 207,
-      y: 76
+      x: 118,
+      y: -2
     }, {
       name: "walkingLeft1",
-      type: "flip",
-      x: 327,
-      y: 76
+      x: 148,
+      y: -2
     }, {
       name: "walkingLeft2",
-      type: "flip",
-      x: 367,
-      y: 76
+      x: 118,
+      y: 28
     }, {
       name: "jumpingRight",
-      x: 207,
-      y: 116
+      type: "flip",
+      x: 148,
+      y: -2
     }, {
       name: "jumpingLeft",
-      type: "flip",
-      x: 207,
-      y: 116
+      x: 148,
+      y: -2
     }, {
       name: "fallingRight",
-      x: 247,
-      y: 116
+      type: "flip",
+      x: 118,
+      y: 28
     }, {
       name: "fallingLeft",
-      type: "flip",
-      x: 247,
-      y: 116
+      x: 118,
+      y: 28
     }]
   }, {
     SpriteSheet: "regularMario",
-    width: 60,
-    height: 60,
+    width: 30,
+    height: 40,
     sprites: [{
       name: "idleRight",
-      x: 209,
-      y: 0
+      x: 30,
+      y: 5
     }, {
       name: "lose",
       x: 9,
       y: 38
     }, {
       name: "walkingRight",
-      x: 328,
-      y: 0
+      x: 30,
+      y: 33
     }, {
       name: "idleLeft",
-      x: 168,
-      y: 0
+      type: "flip",
+      x: 30,
+      y: 5
     }, {
       name: "walkingLeft",
-      x: 49,
-      y: 0
+      type: "flip",
+      x: 30,
+      y: 33
     }, {
       name: "jumpingRight",
-      x: 208,
-      y: 40
+      x: 30,
+      y: 33
     }, {
       name: "jumpingLeft",
-      x: 168,
-      y: 40
+      type: "flip",
+      x: 30,
+      y: 33
     }, {
       name: "transparent",
-      x: 0,
-      y: 0
+      x: 1000,
+      y: 1000
     }]
   }]
 });
@@ -892,8 +895,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enemiesImage", function() { return enemiesImage; });
 /* harmony import */ var _imgs_background_assets_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imgs/background_assets.png */ "./src/imgs/background_assets.png");
 /* harmony import */ var _imgs_background_assets_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_imgs_background_assets_png__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _imgs_mario_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imgs/mario.png */ "./src/imgs/mario.png");
-/* harmony import */ var _imgs_mario_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_imgs_mario_png__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _imgs_sprites_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imgs/sprites.png */ "./src/imgs/sprites.png");
+/* harmony import */ var _imgs_sprites_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_imgs_sprites_png__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _imgs_enemies_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./imgs/enemies.png */ "./src/imgs/enemies.png");
 /* harmony import */ var _imgs_enemies_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_imgs_enemies_png__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _imgs_backgrounds_2_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./imgs/backgrounds-2.png */ "./src/imgs/backgrounds-2.png");
@@ -907,7 +910,7 @@ backgroundImage.src = _imgs_background_assets_png__WEBPACK_IMPORTED_MODULE_0___d
 var backgroundFirstLayerImage = new Image();
 backgroundFirstLayerImage.src = _imgs_backgrounds_2_png__WEBPACK_IMPORTED_MODULE_3___default.a;
 var marioImage = new Image();
-marioImage.src = _imgs_mario_png__WEBPACK_IMPORTED_MODULE_1___default.a;
+marioImage.src = _imgs_sprites_png__WEBPACK_IMPORTED_MODULE_1___default.a;
 var enemiesImage = new Image();
 enemiesImage.src = _imgs_enemies_png__WEBPACK_IMPORTED_MODULE_2___default.a;
 
@@ -2029,16 +2032,16 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
       if (this.pos.y > 400) this.lives = 0;
 
       if (this.lives === 0) {
-        this.width = 29;
-        this.height = 40;
+        this.width = 26;
+        this.height = 33;
         this.mario = "regularMario";
         this.status = "ignoreCollisions";
         if (this.status === "ignoreCollisions" && this.frame !== "lose") this.Lose.start();
         this.frame = "lose";
         return;
       } else if (this.lives === 1) {
-        this.width = 29;
-        this.height = 40;
+        this.width = 26;
+        this.height = 33;
         this.mario = "regularMario";
       } else if (this.lives === 2) {
         this.width = 34;
@@ -2119,6 +2122,10 @@ var Mario = /*#__PURE__*/function (_ObjectEntity) {
   }, {
     key: "draw",
     value: function draw(ctx, spriteSheets, camera) {
+      ctx.strokeStyle = "red";
+      ctx.beginPath();
+      ctx.rect(this.pos.x - camera.pos.x, this.pos.y - camera.pos.y, this.width, this.height);
+      ctx.stroke();
       spriteSheets.get(this.mario).draw(this.frame, ctx, this.pos.x - camera.pos.x, this.pos.y - camera.pos.y);
     }
   }, {
@@ -2706,14 +2713,14 @@ module.exports = "files/enemies.png";
 
 /***/ }),
 
-/***/ "./src/imgs/mario.png":
-/*!****************************!*\
-  !*** ./src/imgs/mario.png ***!
-  \****************************/
+/***/ "./src/imgs/sprites.png":
+/*!******************************!*\
+  !*** ./src/imgs/sprites.png ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "files/mario.png";
+module.exports = "files/sprites.png";
 
 /***/ }),
 

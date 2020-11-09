@@ -228,6 +228,10 @@ img {
   width: 241px;
 }
 
+.nav-icons {
+  margin-bottom: 1em;
+}
+
 .home-nav-icons {
   color: white;
   padding-left: 1em;
